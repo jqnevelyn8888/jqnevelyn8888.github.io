@@ -8,6 +8,8 @@ table, th {
 
 img {
     display: inline;
+    max-width: 500px;
+    max-height: 500px;
 }
 
 th, td {

@@ -15,20 +15,61 @@
     <pre class="code-block">
         <code>/* Input: int, int <br>Output: int<br>Description: add and return sum */</code>
     </pre>
-
-    <div class="code-block">
-        test<br>test
-    </div>
-
+    
     <h1>Vectors and Functions</h1>
+    <hr>
 
-    <h3>Vectors</h3>
-    <p>
-        Vectors in C++ can grow and shrink in size automatically. 
-    </p> 
+    <h2>What is a vector?</h2>
+    <ul>
+        <li>Essentially a resizable array, like an ArrayList in Java.</li>
+        <ul>
+            <li>Can get the size of the vector</li>
+            <li>Can add and remove elements</li>
+            <li>Ordered</li>
+        </ul>
+        <li>Requires header: &lt;vector&gt; </li>
+        <li>Example: #include &lt;vector&gt; </li>
+    </ul>
+    <hr>
+
+    <h2>Declaring</h2>
+    <ul>
+        <li>Vectors can be declared as either</li>
+        <ul>
+            <li>Default size</li>
+            <li>Initial size</li>
+            <li>Initial size and initial value</li>
+            <li>Initial values, determined size</li>
+        </ul>
+        <li>vector &lt;DATATYPE&gt; name; </li>
+    </ul>
+    <hr>
+
+    <h2>Declaring example: </h2>
+    <img src="vector_and_funcs_examples/declare_example.png">
+    <hr>
+
+    <h2>Adding Elements (push_back)</h2>
+    <img src="vector_and_funcs_examples/pushback_example.png">
+    <hr>
+
+    <h2>Resizing a Vector</h2>
+    <p>Resizing a vector could either expand the vector or shrink the vector, depending on the size of the vector before the .resize() is called. If you want to change the vector to size n, then...</p>
+    <ul>
+        <li>If n is more than the current size of the vector, then the vector expands, the extra elements are appended at the end of the vector.</li>
+        <li>If n is less than the current size of the vector, then the vector shrinks, and extra elements are demolished.</li>
+    </ul>
+    <p>Example: </p>
+    <img src="vector_and_funcs_examples/resize_example.png">
+    <hr>
+
+    <h2>Accessing Elements</h2>
+    <p>You can access elements in the vector using [] or .at()</p>
+
 
     
-    <h4>Modularity (Functions)</h4>
+    <h3>Modularity (Functions)</h3>
+    
     <p>
         <ul>
             <li>Organization, Readability</li>

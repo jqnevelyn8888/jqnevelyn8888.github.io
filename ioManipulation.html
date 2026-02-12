@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Page Title</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <h1>ioManipulation</h1>
+        <hr>
+        <h2>Topics:</h2>
+        <ul>
+            <li>Insertion and Extraction Operators</li>
+            <li>Manipulators</li>
+            <li>Set(w) Quirks</li>
+            <li>Examples</li>
+        </ul>
+        <hr>
+        <h3>Extraction Operator >> </h3>
+        <ul>
+            <li>The extraction operator takes two operands</li>
+            <li>Left operand --> an input stream expression (like cin or an ifstream object)</li>
+            <li>Right operand --> a variable to store input</li>
+        </ul>
+        <hr>
+        <h3>Insertion Operator << </h3>
+        <ul>
+            <li>The insertion operator takes two operands</li>
+            <li>Left operand --> an output stream expression (like cout or an ofstream object)</li>
+            <li>Right operand --> an expression of a simple type, or a string, or a manipulator</li>
+        </ul>
+        <hr>
+        <h3>Manipulators</h3>
+        <ul>
+            <li>Manipulators are used only in input and output statements to control format</li>
+            <li>Manipulators are found in both iostream and iomanip</li>
+            <li>Examples: </li>
+            <ul>
+                <li>Allow for a "field width" to align text</li>
+                <li>Change how values are displayed</li>
+                <ul>
+                    <li>Decimal, Hex, etc</li>
+                </ul>
+            </ul>
+
+        </ul>
+        <hr>
+        <h3>Manipulators in iostream</h3>
+        endl: terminate the output line ("\n equiv.")<br>
+        fixed: display in decimal point format with 6 decimal places as defult.<br>
+        showpoint: display a whole number in decimal format with 6 significant digits as default.
+        <hr>
+
+        <h3>Manipulators in iomanip</h3>
+        setw(n): fieldwidth specification manipulator
+        <p>Sets the width of the next value (int, float, String) to be printed over 'n' characters with right justification as default.</p>
+        <p>This manipulator is the ONLY one that is NOT persistent. This means that it only affects the very next item displayed.</p>
+        <p>Useful to create/align columns in output.</p>
+        setprecision(n): decimal number specification manipulator
+        <p>Sets ALL subsequent floating-point outputs to be displayed with the 'n' decimal places of accuracy provided that fixed manipulator has already been specified.</p>
+        <p>Default is usually 6 decimal places.</p>
+        scientific: set ALL subsequent floating point output to be displayed in scientific notaion. This is the default.<br>
+        hex: set ALL subsequent outputs to be displayed in decimal notion (base 10). Mainly used if you had preciously set output to scientific or hex, and need to change back.<br>
+        setfill(''): fills the unused field width with the specified character. By default, this is a space. Useful for adding leading zeros.<br>
+        left: set ALL subsequent outputs to left-justification within the printing field.
+        right: set ALL subsequent outputs to right-justification within the printing field. This is the default, like Java's .format().<br>
+        <hr>
+        <h3> setw() Quirks</h3>
+        <img src="iomanipulation_images/setw_quirks_ex.png">
+        <img src="iomanipulation_images/setw_quirks_ex2.png">
+    </body>
+
+</html>
