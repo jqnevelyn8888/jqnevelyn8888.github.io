@@ -25,6 +25,17 @@ code {
     font-family: "Courier New", Courier, monospace;
 }
 
+.top-bar {
+    display: flex;
+    flex-direction: row;
+    background-color: grey;
+}
+
+.bar-buttons {
+    background-color:rgb(79, 81, 109)y;
+}
+
+
 .limited_table {
     table-layout: fixed;
     width: 100%;
