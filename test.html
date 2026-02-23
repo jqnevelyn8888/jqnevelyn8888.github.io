@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Test</title>
+        <link rel="stylesheet" href="test.css">
+        <script>
+            function myfunction() {
+                alert("kiss")
+            }
+            document.getElementbyID("demo").innerHTML = "Hello Javascript";
+        </script>
+    </head>
+
+    <body style="background-color: powderblue; font-family: 'Times New Roman', Times, serif;">
+        <h1 id="myHeader" style="font-size:60px; text-align:center; border:2px solid Tomato;">Test</h1>
+        <p>ID must only be used on one element</p>
+        <a href="#love">fu hua and senti</a>
+        <p>You can add a link to bookmark another page</p>
+        <p  style="color:rgb(77, 8, 8); background-color:tomato; font-size: 300%;" title="RED">red</p>
+        <pre style="color:blueviolet"> <!--pre-formatted text-->
+            Fu Hua and Senti
+            have a picnic
+            under a tree
+        </pre>
+        <b>This text is bold</b> <br>
+        <strong>This text is strong</strong>
+        <i>This text is romantic</i> <br>
+        <em>This text is emphasized</em> <br>
+        <small>Smaller text</small>
+        <p>This will be <mark>marked</mark></p>
+        <p>I like <del>oranges</del> <ins>Apples</ins></p>
+
+        <p>H<sub>2</sub>O</p>
+
+        <div style="background: pink;">
+            <p>Quote: </p>
+            <blockquote cite = "https://www.w3schools.com/html/html_intro.asp">
+                The purpose of a web browser (Chrome, Edge, Firefox, Safari) is to read HTML documents and display them correctly.
+            </blockquote>
+            <p>WWF's goal is to: <q>build a future where people live...</q></p>
+            <p>The <abbr title="World Health Organization">WHO</abbr></p>
+            <address>
+                Written by John Doe. <br>
+                Visit us at: <br>
+                Example.com <br>
+                Box 564, Disneyland <br>
+                USA
+            </address>
+            <p><cite>The scream</cite></p>
+            <bdo dir="rtl">Will be written right to left</bdo>
+        </div>
+
+        <a href="https://www.w3schools.com/html/html_intro.asp" target="_blank">html tutorial</a> <br>
+        <a href="https://www.w3schools.com/html/html_intro.asp" target="_parent">html tutorial parent frame</a> <br>
+        <a href="https://www.w3schools.com/html/html_intro.asp" target="_top">html tutorial top</a> <br>
+
+        <a href="https://danbooru.donmai.us/posts?tags=fu_hua" title="love" id="love">
+            <img src="test-img/5859_imgupscaler.ai_Sharpener_4K.png">
+        </a>
+
+        <p>word wrod wrod wrod word wrod word word wor dword</p>
+        <img src="test-img/image.png" style="float:right; width:42px; height:42px;" onclick="myfunction()">
+        <p>map tag defines san image map which is an image with clickable areas</p>
+
+        <picture>
+            <source media="(min-width: 650px)" srcset="test-img/Screenshot 2025-09-18 222006.png">
+            <img src="test-img/image.png">
+        </picture>
+
+        <p>the span attribute specifies how many columns get the style</p>
+        <p>The style attribute specifies the style to give the columns</p>
+        <table>
+            <tr>
+                <colgroup>
+                    <col span="2" style="background-color: yellow">
+                    <col span="1" style="visibility: collapse">
+                </colgroup>
+            </tr>
+            <tr>
+                <th colspan="3">married</th>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <th>traits</th>
+                <th>love</th>
+            </tr>
+            <tr>
+                <td>Fu Hua</td>
+                <td>Mother sister grandma wife girlfriend lover</td>
+                <td>senti's wife</td>
+            </tr>
+            <tr>
+                <td>Herrscher of Sentience</td>
+                <td>baby</td>
+                <td>Fu Hua's wife</td>
+            </tr>
+        </table>
+
+        <dl>
+            <dt>Coffee</dt>
+            <dd>- black hot drink</dd>
+        </dl>
+
+        <ul style="list-style-type:square;">
+            <li>fruits</li>
+            <li>cool</li>
+        </ul>
+
+        <span>span is being used. an inline element cannot contain a block-level element</span>
+
+        <div class="character">
+            <p>Fu hua is the best. </p>
+            <p>She is my big sister and mother. </p>
+        </div>
+
+        <div class="character">
+            <p>Senti is Fu hua's wife</p>
+            <p>They make love</p>
+        </div>
+
+        <button onclick="alert('hello!')">Click me</button>
+        <button disabled>You cannot click me</button>
+        <button id="demo">demo</button>
+
+        <iframe src="https://danbooru.donmai.us/posts?tags=fu_hua" title="sentihua pics"></iframe>
+
+
+
+    </body>
+
+</html>

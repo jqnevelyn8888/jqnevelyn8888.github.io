@@ -1,0 +1,50 @@
+p {
+    border: 2px solid black;
+    padding: 30px;
+    margin: 50px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-spacing: 20px;
+}
+
+tr:nth-child(even) {
+    background-color:grey;
+}
+
+tr:hover {
+    background-color:pink;
+}
+
+
+a:link, a:visited {
+    background-color:pink;
+    color: rgb(153, 23, 45);
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+a:hover {
+    color:purple;
+    text-decoration: dashed;
+    background-color:rgb(79, 174, 112);
+}
+
+a:active {
+    color:black;
+}
+
+.character {
+    background-color:rgb(92, 92, 137);
+    color:white;
+    border: 1px solid rgb(6, 3, 37);
+    margin: 5px;
+}
+
+#myHeader {
+    color: tomato;
+}

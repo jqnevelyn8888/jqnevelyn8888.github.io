@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>ArgcArgv</h1>
+        <hr>
+
+        <h2>Command Line Arguments</h2>
+        <ul>
+            <li>When we have run programs up until now, we have only run the program name on the command line</li>
+            <li>You can write a program to allow the user to write more commands besides the program name and use that information in the program as you wish.</li>
+        </ul>
+        <hr>
+
+        <h2>Command Line Arguments</h2>
+        <p>In the example below, we have the program name and arguments following, separated by spaces: </p>
+        <ul>
+            <li>./lab5 data1 data2 10 20 30</li>
+        </ul>
+        <hr>
+
+        <h2>Main Parameters</h2>
+        <ul>
+            <li>You give main() 2 parameters in C++ to have command line arguments. These are the only two arguments main is allowed to have.</li>
+            <ol>
+                <li>argc(an integer) -- "argument count"</li>
+                <li>argv (an array of c-style strings) -- "argument values"</li>
+            </ol>
+            <li>You can write this in two different ways: </li>
+            <ul>
+                <li>int main(int argc, char **argv)</li>
+                <li>OR int main(int argc, char *argv[])</li>
+            </ul>
+            <li>The only difference is that we have two ways to declare a c-style string. Both are valid.</li>
+        </ul>
+        <h3>int main(int argc, char *argv[]) {}</h3>
+        <ul>
+            <li>argc - the number of arguments in the argv vector (vector means array in this case).</li>
+            <li>argv[] - an array of char * (char * is a C-style string).</li>
+        </ul>
+        <hr>
+
+        <h2>Where are the args?</h2>
+        <p>int main(int argc, char **argv)</p>
+        <ul>
+            <li><b>argc</b> is just the count (a simple int) - it can be useful sometimes, for example to error-check proper usage/display an error message if the executable was not launched correctly</li>
+            <li>Arguments are in argv array, acessible via indexing. For example: <b>argv[i]</b> will be a c-style string containing the ith command line argument</li>
+            <li><b>argv</b> contains values at locations 0 through argc-1. (but the value at index 0 is useless most of the time - its just the executable name)</li>
+        </ul>
+        <hr>
+
+        <h2>Argc</h2>
+        <ul>
+            <li>If <b>argc</b> is equal to 2, then you have one argument to your program (bc your program name is the first argument on the command line)</li>
+            <li>You can use <b>argc</b> to check if the user is running your program with the correct number of arguments</li>
+        </ul>
+        <hr>
+        
+        <h2>Argv</h2>
+        <ul>
+            <li>Whenever you use any <b>argv</b>, unless you are just printing out the strings, you should convert them to C++ strings of use stringstreams to change them to other data types (ints, doubles, etc)</li>
+            <li>string a1, a2;</li>
+            <li>a1 = argv[1];</li>
+            <li>a2 = argv[2];</li>
+        </ul>
+        <hr>
+
+        <h2>Example Usage</h2>
+        <img src="ArgcArgv_examples/Screenshot 2026-02-19 153620.png">
+        <hr>
+
+        <h2>Convert Args with String Streams</h2>
+        <img src="ArgcArgv_examples/image.png">
+        <hr>
+        
+        <h2>Error Checking</h2>
+        <p>It is good practice to check <b>argc</b> at the beginning of the program to verify the user ran the program with the correct number of arguments.</p>
+        <p>Always check argc before argv.</p>
+    </body>
+</html>

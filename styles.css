@@ -4,21 +4,22 @@ body {
 
 table, th {
     border: 1px solid black;
+    border-style: dotted;
+    text-align: center;
+}
+
+td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
 }
 
 img {
     display: inline;
-    max-width: 500px;
-    max-height: 500px;
+    max-width: 300px;
+    max-height: 300px;
 }
 
-th, td {
-    padding: 10px;
-}
-
-td {
-    font-weight: normal;
-} 
 
 code {
     font-family: "Courier New", Courier, monospace;
