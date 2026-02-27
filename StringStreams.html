@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <title>COSC102 Notes Homepage</title>
+    <link rel="icon" type="image/x-icon" href="test-img/image.png">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    </style>
+    <script src=""></script>
+
+
+    <body>
+        <h1>StringStreams</h1>
+        <hr>
+
+        <h2>Topics</h2>
+        <ul>
+            <li>String streams &lt;sstream&gt;</li>
+            <li>Input vs Output String Streams</li>
+            <ul>
+                <li>istringstream vs ostringstream</li>
+            </ul>
+            <li>Reusing string streams</li>
+            <ul>
+                <li>clear()</li>
+                <li>.str("")</li>
+            </ul>
+            <li>Use Cases</li>
+            <ul>
+                <li>Argv/Argc</li>
+                <li>Getline()</li>
+            </ul>
+        </ul>
+        <hr>
+
+        <h2>String Streams</h2>
+        <ul>
+            <li>"Helper" Objects" for working with strings (which are also objects in C++)</li>
+            <li>Allow you to build or extract a string</li>
+            <li>Work similarly to other streams we've seen (file streams, I/O streams)</li>
+            <li>Can use stream manipulators like file streams and I/O streams</li>
+            <ul>
+                <li>setw(), left, right, setfill(), etc</li>
+            </ul>
+            <li>Use #include &lt;sstream&gt; to utilize</li>
+            <li>For stringstream, include &lt;bits/stdc++.h&gt;</li>
+        </ul>
+        <hr>
+
+        <h2>Purpose</h2>
+        <ul>
+            <li>Input String Stream (istringstream)</li>
+            <ul>
+                <li>Extract integers, doubles, and other data types from strings.</li>
+                <li>Uses a string as data source</li>
+            </ul>
+            <li>Output String Stream (ostringstream)</li>
+            <ul>
+                <li>Insert integers, doubles, and other data types into strings.</li>
+                <li>Builds a string</li>
+            </ul>
+        </ul>
+        <hr>
+
+        <h2>istringstream</h2>
+        <ul>
+            <li>Convenient way in C++ to extract data from a string. Consider the following example: </li>
+            <li>string data = "10 20.5 20"</li>
+            <ul>
+                <li>This is a C++ string containing the following characters: </li>
+                <ul>
+                    <li>'1', '0', ' ', '2', '0', '.', '5', ' ', '3', '0'</li>
+                </ul>
+                <li>How do I store 10, 20.5, and 30 as an individual integer, double, and another integer?</li>
+            </ul>
+        </ul>
+        <hr>
+
+        <h2>istringstream Example</h2>
+        <img src="stringstreams_examples/ex1.png">
+        <p>The first way works for highly structured input data, not very flexible. getline() is more flexible</p>
+        <hr>
+
+        <h2>Re-using an istringstream</h2>
+        <p>You must clear the istringstream flags prior to giving it another string.</p>
+        <pre>
+            <code>
+                sin.clear();
+                sin.str("Some Other Data")
+            </code>
+        </pre>
+        <p>.str() will be ignored if .clear() is not called. You must use .clear() FIRST and then call .str().</p>
+        <hr>
+
+        <h2>Output String Streams</h2>
+        <img src="stringstreams_examples/ex2.png">
+        <hr>
+
+        <h2>Re-using ostringstream</h2>
+        <p>Empty string is how we clear the output string</p>
+        <img src="stringstreams_examples/ex3.png">
+        <hr>
+
+        <h2>Use Cases: Getline</h2>
+        <div class="text-and-image">
+            <div class="text">
+                <p>If we grab lines of input from cin and wish to store parts of that input as various data types, we can take the string created from getline() and pick it apart with a string stream.</p>
+                <ul>
+                    <li>#include &lt;string&gt;</li>
+                </ul>
+                <p>Using the getline function, we can read an entire line from a stream. All characters up to (but not including) a '\n' are stored into a string variable.</p>
+                <ul>
+                    <li>getline(streamToReadFrom, stringToStore)</li>
+                </ul>
+            </div>
+            <div class="image">
+                <img src="stringstreams_examples/ex4.png">
+            </div>
+        </div>
+        <p>stringstream is bidirectional. You can build strings and extract from them. </p>
+        <img src="stringstreams_examples/ex5.png">
+        <hr>
+
+        <h2>Use Cases: Argv/Argc</h2>
+        <ul>
+            <li>When you have command line arguments that are numberical types (such as int, double, etc.), argv/argc store the data as a C-style string</li>
+            <li>In order to extract the data into the appropriate type, use an istringstream</li>
+        </ul>
+        
+    </body>
+</html>

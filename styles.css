@@ -47,3 +47,12 @@ code {
 .code-block {
     background-color: "grey";
 }
+
+.text-and-image {
+    display: flex;
+    flex-direction: row;
+}
+
+.image {
+    padding-left: 20px;
+}
