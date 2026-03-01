@@ -4,20 +4,18 @@ body {
 
 table, th {
     border: 1px solid black;
-    border-style: dotted;
     text-align: center;
 }
 
 td {
     border: 1px solid black;
     padding: 10px;
-    text-align: left;
+    text-align: center;
 }
 
 img {
-    display: inline;
-    max-width: 300px;
-    max-height: 300px;
+    max-width: 100%;
+    height: auto;
 }
 
 
@@ -44,6 +42,10 @@ code {
     border-collapse: collapse;
 }
 
+.table-head {
+    background-color:rgb(178, 181, 192);
+}
+
 .code-block {
     background-color: "grey";
 }
@@ -55,4 +57,8 @@ code {
 
 .image {
     padding-left: 20px;
+}
+
+.add-notes {
+    text-align: left;
 }

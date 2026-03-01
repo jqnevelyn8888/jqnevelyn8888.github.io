@@ -26,23 +26,32 @@
     <h2>Terminal VS. Shell</h2>
     <p>The <b>terminal </b>is an application/program that can be used to issue commands to the computer. Runs a shell.</p>
     <p>The <b>shell</b> is the layer that transfers the command from the keyboard to the actual OS.</p>
+    <hr>
+
+    <h2>Linux and Unix</h2>
+    <p>The kernel is the core part of a computer that manages hardware. An operating system is software that manages hardware and software and provides user services. 
+        Unix is a complete multiuser OS, and Linux is a Unix-like kernel that becomes a full OS when combined with tools and applications.</p>
+    <ul>
+        <li>An operating system (OS) is software that manages a computer’s hardware and software resources, provides common services for programs, and allows users to interact with the computer.</li>
+    </ul>
+    <hr>
 
 
-    <caption>Terminal commands and uses: </caption>
+    <h2>Terminal commands and uses: </h2>
     <table class="limited_table">
         <thead>
             <tr>
-                <th>Command</th>
-                <th>Use</th>
-                <th>Example</th>
-                <th>Additional Notes</th>
+                <th class="table-head">Command</th>
+                <th class="table-head">Use</th>
+                <th class="table-head">Example</th>
+                <th class="table-head">Additional Notes</th>
             </tr>
         </thead>
         <tr>
-            <td>ls</td>
+            <th>ls</th>
             <td>List files in the current directory. For more detailed listing of the directory contents, type " -l" after "ls."</td>
             <td><img src="example_images/ls_example.png" alt="ls_example"></td>
-            <td>
+            <td class="add-notes">
                 <ul>
                     <li>-a -- see hidden files</li>
                     <li>-l -- more information</li>
@@ -50,97 +59,106 @@
             </td>
         </tr>
         <tr>
-            <td>cd</td>
+            <th>cd</th>
             <td>Moves to a different directory. Type "cd .." to go back one directory.</td>
-            <th><img src="example_images/cd_example.png" alt="cd_example.png"></th>
+            <td><img src="example_images/cd_example.png" alt="cd_example.png"></td>
         </tr>
         <tr>
             <th>pwd</th>
-            <th>Verifies your current directory.</th>
-            <th><img src="example_images/pwd_example.png", alt="pwd_example"> </th>
+            <td>Verifies your current directory.</td>
+            <td><img src="example_images/pwd_example.png", alt="pwd_example"> </td>
         </tr>
         <tr>
             <th>mkdir</th>
-            <th>Makes a directory</th>
-            <th><img src="example_images/mkdir_example.png" alt="mkdir_example"></th>
+            <td>Makes a directory</td>
+            <td><img src="example_images/mkdir_example.png" alt="mkdir_example"></td>
         </tr>
         <tr>
             <th>rm</th>
-            <th>Removes a file or directory. To remove a directory, add "-r" before the folder name. Does not give warnings.</th>
-            <th><img src="example_images/rm_example.png" alt="rm_example"></th>
+            <td>Removes a file or directory. To remove a directory, add "-r" before the folder name. Does not give warnings.</td>
+            <td><img src="example_images/rm_example.png" alt="rm_example"></td>
         </tr>
         <tr>
             <th>rmdir</th>
-            <th>Removes a directory only if it's empty.</th>
-            <th><img src="example_images/rmdir_example.png", alt="rmdir_example"></th>
+            <td>Removes a directory only if it's empty.</td>
+            <td><img src="example_images/rmdir_example.png", alt="rmdir_example"></td>
         </tr>
         <tr>
             <th>mv</th>
-            <th>Moves a file or a directory or renames them</th>
-            <th><img src="example_images/mv_example.png" alt="mv_example"></th>
+            <td>Moves a file or a directory or renames them</td>
+            <td><img src="example_images/mv_example.png" alt="mv_example"></td>
         </tr>
         <tr>
             <th>ssh</th>
-            <th>Connects to other machines</th>
-            <th>ssh username@hydra0.eecs.utk.edu</th>
+            <td>Connects to other machines</td>
+            <td>ssh username@hydra0.eecs.utk.edu</td>
         </tr>
         <tr>
             <th>nano</th>
-            <th>Text Editor</th>
-            <th><img src="example_images/nano_example.png" alt=""></th>
+            <td>Text Editor</td>
+            <td><img src="example_images/nano_example.png" alt=""></td>
         </tr>
         <tr>
             <th>vi/vim</th>
-            <th>Another text editor. To exit, press esc then type ":q"(exits without saving). Press enter after. </th>
-            <th><img src="example_images/vi_example.png" alt=""></th>
+            <td>Another text editor. To exit, press esc then type ":q"(exits without saving). Press enter after. </td>
+            <td><img src="example_images/vi_example.png" alt=""></td>
+            <td class="add-notes">
+                <ul>
+                    <li>vim is a terminal-based text editor</li>
+                    <li>Three main modes: Normal (cannot type text/command mode), insert mode (where you actually type text), and command-line mode (save, quit, searching)</li>
+                    <li>How to enter/exit insert mode: i -- insert at cursor; a -- insert after cursor; o -- open new line below; O -- open new line above</li>
+                    <li>To exit insert mode press esc.</li>
+                    <li>Command line mode: :w --> save; :q --> quit; :wq --> save and quit; :q! --> quit without saving</li>
+                </ul>
+            </td>
         </tr>
         <tr>
             <th>g++</th>
-            <th>C++ Compiler. Makes an executable from C++ course code files.</th>
-            <th><img src="example_images/gplusplus_example.png" alt=""></th>
-            <th>
+            <td>C++ Compiler. Makes an executable from C++ course code files.</td>
+            <td><img src="example_images/gplusplus_example.png" alt=""></td>
+            <td class="add-notes">
                 <ul>
                     <li>simple g++ source.cpp</li>
                     <li>g++ -o exec_name source(s)</li>
                     <li>g++ -std=c++11 -o exec source(s)</li>
                 </ul>
-            </th>
+            </td>
         </tr>
         <tr>
             <th>clear</th>
-            <th>Clears the screen.</th>
-            <th>clear</th>
+            <td>Clears the screen.</td>
+            <td>clear</td>
         </tr>
         <tr>
             <th>cp</th>
-            <th>Copies a file. Input the name of file you want to copy after cp, if you want to specify the destination of the new file, input it after.</th>
-            <th><img src="example_images/cp_example.png", alt="cp_example"></th>
-            <th>
+            <td>Copies a file. Input the name of file you want to copy after cp, if you want to specify the destination of the new file, input it after.</td>
+            <td><img src="example_images/cp_example.png", alt="cp_example"></td>
+            <td class="add-notes">
                 <ul>
                     <li>scp -- copy variant, for transfer from one machine to another -- scp ~ username@hydra12.eecs.utk.edu:path</li>
                 </ul>
-            </th>
+            </td>
         </tr>
         <tr>
             <th>man</th>
-            <th>Short for "manual." Quick and easy way to access useful documentation on any command. Type it before any command.</th>
-            <th><img src="example_images/man_example.png", alt="man_example"></th>
+            <td>Short for "manual." Quick and easy way to access useful documentation on any command. Type it before any command.</td>
+            <td><img src="example_images/man_example.png", alt="man_example"></td>
         </tr>
         <tr>
             <th>w</th>
-            <th>Shows who is logged on and what they are doing.</th>
-            <th>w</th>
+            <td>Shows who is logged on and what they are doing.</td>
+            <td>w</th>
         </tr>
         <tr>
             <th>who</th>
-            <th>Shows who is logged on and where they are</th>
-            <th>who</th>
+            <td>Shows who is logged on and where they are</td>
+            <td>who</td>
         </tr>
         <tr>
             <th>chmod</th>
-            <th>Changes file or directory permissions</th>
-            <th>chmod 755 test.cpp</th>
-            <th>
+            <td>Changes file or directory permissions</td>
+            <td>chmod 755 test.cpp</td>
+            <td class="add-notes">
                 <ul>
                     <li>user, group, world</li>
                     <li><b>IMPORTANT(TEST): r=read=4, w=write=2, x=execute=1</b></li>
@@ -150,23 +168,23 @@
                     <li>(ex.)chmod 755 -- user:7; group:5; world:5</li>
                     <li>0: nothing</li>
                 </ul>
-            </th>
+            </td>
         </tr>
         <tr>
             <th>lscpu</th>
-            <th>Shows detailed information about your CPU in a clean, human-readable format</th>
-            <th><img src="example_images/lscpu_example.png"></th>
+            <td>Shows detailed information about your CPU in a clean, human-readable format</td>
+            <td><img src="example_images/lscpu_example.png"></td>
         </tr>
         <tr>
             <th>lshw</th>
-            <th>Shows detailed information on system's hardware.</th>
-            <th><img src="example_images/lshw_example.png"></th>
+            <td>Shows detailed information on system's hardware.</td>
+            <td><img src="example_images/lshw_example.png"></td>
         </tr>
         <tr>
             <th>hostname -i</th>
-            <th>Prints IP address(es) associated with your machine's hostname</th>
+            <td>Prints IP address(es) associated with your machine's hostname</td>
             <td>hostname -i</td>
-            <td></td>
+            <td class="add-notes"></td>
         </tr>
     </table>
     <ul>
