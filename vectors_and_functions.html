@@ -11,14 +11,6 @@
 </style>
 <script src=""></script>
 <body>
-    <h3>For class: </h3>
-    <pre class="code-block">
-        <code>/* Input: int, int <br>Output: int<br>Description: add and return sum */</code>
-    </pre>
-    
-    <h1>Vectors and Functions</h1>
-    <hr>
-
     <h2>What is a vector?</h2>
     <ul>
         <li>Essentially a resizable array, like an ArrayList in Java.</li>
@@ -32,44 +24,226 @@
     </ul>
     <hr>
 
-    <h2>Declaring</h2>
-    <ul>
-        <li>Vectors can be declared as either</li>
-        <ul>
-            <li>Default size</li>
-            <li>Initial size</li>
-            <li>Initial size and initial value</li>
-            <li>Initial values, determined size</li>
-        </ul>
-        <li>vector &lt;DATATYPE&gt; name; </li>
-    </ul>
+    <h2>Vectors in C++ vs. Java</h2>
+    <table>
+     <thead>
+      <tr>
+        <th>Feature / Operation</th>
+      <th>C++ <code>std::vector</code></th>
+        <th>Java <code>Vector</code></th>
+         <th>Notes / Differences</th>
+       </tr>
+     </thead>
+     <tbody>
+      <tr>
+        <th>Type / Template</th>
+        <td><code>std::vector&lt;T&gt;</code> (template)</td>
+        <td><code>Vector&lt;T&gt;</code> (class with generics)</td>
+       <td>C++ uses templates, Java uses generics</td>
+      </tr>
+      <tr>
+        <th>Dynamic resizing</th>
+        <td>Yes</td>
+        <td>Yes</td>
+       <td>Both grow automatically</td>
+     </tr>
+      <tr>
+        <th>Add element</th>
+        <td><code>v.push_back(x)</code></td>
+        <td><code>v.add(x)</code></td>
+        <td>Method names differ</td>
+      </tr>
+      <tr>
+        <th>Remove last element</th>
+        <td><code>v.pop_back()</code></td>
+        <td><code>v.remove(v.size()-1)</code></td>
+        <td>C++ has direct <code>pop_back()</code></td>
+      </tr>
+      <tr>
+        <th>Access element by index</th>
+        <td><code>v[i]</code> or <code>v.at(i)</code></td>
+        <td><code>v.get(i)</code></td>
+         <td>C++ allows <code>[]</code>, Java requires <code>get()</code></td>
+      </tr>
+       <tr>
+        <th>Set element by index</th>
+        <td><code>v[i] = value</code></td>
+        <td><code>v.set(i, value)</code></td>
+        <td>Method names differ</td>
+      </tr>
+      <tr>
+        <th>Size</th>
+        <td><code>v.size()</code></td>
+         <td><code>v.size()</code></td>
+        <td>Same</td>
+       </tr>
+     <tr>
+       <th>Iteration</th>
+        <td><code>for(int x : v)</code> or iterators</td>
+        <td><code>for(T x : v)</code> or <code>Iterator</code></td>
+         <td>C++ uses iterators or range-based for loop</td>
+       </tr>
+       <tr>
+         <th>Initialization</th>
+         <td><code>vector&lt;int&gt; v = {1,2,3};</code></td>
+       <td>
+         <code>Vector&lt;Integer&gt; v = new Vector&lt;&gt;();</code><br>
+         <code>v.add(1); v.add(2);</code>
+       </td>
+       <td>C++ can use initializer lists, Java adds elements individually</td>
+      </tr>
+      <tr>
+         <th>Memory / Performance</th>
+         <td>Lightweight, contiguous memory</td>
+         <td>Slightly heavier object overhead</td>
+         <td>Java may involve boxing for primitives</td>
+      </tr>
+      <tr>
+         <th>Iterator invalidation</th>
+         <td>Insertion/removal may invalidate iterators</td>
+        <td>Insertion/removal may invalidate iterators</td>
+        <td>Both can invalidate iterators when modified</td>
+        </tr>
+    </tbody>
+    </table>
     <hr>
 
-    <h2>Declaring example: </h2>
-    <img src="vector_and_funcs_examples/declare_example.png">
+    <div class="text-and-image">
+        <div class="text">
+            <h2>Declaring</h2>
+            <ul>
+                <li>Vectors can be declared as either</li>
+                <ul>
+                    <li>Default size</li>
+                    <li>Initial size</li>
+                    <li>Initial size and initial value</li>
+                    <li>Initial values, determined size</li>
+                </ul>
+                <li>vector &lt;DATATYPE&gt; name; </li>
+            </ul>
+        </div>
+        <div class="image">
+            <h2>Declaring example: </h2>
+            <img src="vector_and_funcs_examples/declare_example.png" class="image-in-div">
+        </div>
+    </div> 
     <hr>
 
-    <h2>Adding Elements (push_back)</h2>
-    <img src="vector_and_funcs_examples/pushback_example.png">
+    <div class="text-and-image">
+        <div class="text">
+            <h2>Adding Elements (push_back)</h2>
+            <ul>
+                <li>push_back() is a member function of the std::vector class.
+                <li>It adds (appends) a new element to the end of the vector.</li>
+                <li>The vector grows dynamically to accommodate the new element.</li>
+            </ul>
+            <p>.pop_back() removes the element at the end of the vector.</p>
+        </div>
+        <div class="image">
+            <img src="vector_and_funcs_examples/pushback_example.png" class="image-in-div">
+        </div>
+    </div>
     <hr>
 
-    <h2>Resizing a Vector</h2>
-    <p>Resizing a vector could either expand the vector or shrink the vector, depending on the size of the vector before the .resize() is called. If you want to change the vector to size n, then...</p>
-    <ul>
-        <li>If n is more than the current size of the vector, then the vector expands, the extra elements are appended at the end of the vector.</li>
-        <li>If n is less than the current size of the vector, then the vector shrinks, and extra elements are demolished.</li>
-    </ul>
-    <p>Example: </p>
-    <img src="vector_and_funcs_examples/resize_example.png">
+    <div class="text-and-image">
+        <div class="text">
+            <h2>Resizing a Vector</h2>
+            <p>Resizing a vector could either expand the vector or shrink the vector, depending on the size of the vector before the .resize() is called. If you want to change the vector to size n, then...</p>
+            <ul>
+                <li>If n is more than the current size of the vector, then the vector expands, the extra elements are appended at the end of the vector.</li>
+                <li>If n is less than the current size of the vector, then the vector shrinks, and extra elements are demolished.</li>
+            </ul>
+        </div>
+        <div class="image">
+            <img src="vector_and_funcs_examples/resizing_ex.png" class="image-in-div">
+        </div>
+    </div>
     <hr>
-
+    
     <h2>Accessing Elements</h2>
     <p>You can access elements in the vector using [] or .at()</p>
-    
+    <ul>
+        <li>v[index] does NOT do bounds checking.</li>
+        <li>v.at(index) does do bounds checking and throwsand throws an out_of_range exception if invalid.</li>
+    </ul>
+    <p>.front() accesses element at v.at(0) and .back() accesses the very last element.</p>
+    <hr>
 
-    
-    <h3>Modularity (Functions)</h3>
-    
+    <div class="text-and-image">
+        <div class="text">
+            <h2>Clearing a Vector</h2>
+            <ul>
+                <li>Reusing a vector can be done with the .clear() method</li>
+                <li>Clearing a vector does two things:</li>
+                <ul>
+                    <li>Destroys all the elements in the vector.</li>
+                    <li>Changes the size of the vector to zero.</li>
+                </ul>
+                <li>You can think of it as resizing a vector to zero.</li>
+            </ul>
+        </div>
+        <div class="image">
+            <img src="vector_and_funcs_examples/clearing_ex.png" class="image-in-div">
+        </div>
+    </div>
+    <hr>
+
+    <h2>Copying vectors</h2>
+    <p>Unlike Java arrays (or ArrayLists, vectors, etc.), C++ vectors can be copies using the assignment operator.</p>
+    <pre>
+        vector<int> a = {1, 2, 3, 4, 5};
+        vector<int> b = a;
+    </pre>
+    <hr>
+
+    <div class="text-and-image">
+        <div class="text">
+            <h2>Calculating the Min/Max</h2>
+            <p>Find the minimum and maximum values in a vector.</p>
+            <ul>
+                <li>Solution: </li>
+                <ol>
+                    <li>Assume the first element is both the min and max.</li>
+                    <li>Iterate from second element to last element.</li>
+                    <ul>
+                        <li>If the element is smaller than the min, the new min is this element.</li>
+                        <li>If the element is bigger than the max, the new max is this element.</li>
+                    </ul>
+                </ol>
+            </ul>
+        </div>
+        <div class="image">
+            <img src="vector_and_funcs_examples/min-max_ex.png" class="image-in-div">
+        </div>
+    </div>
+    <hr>
+
+    <div class="text-and-image">
+        <div class="text">
+            <h2>sort(v.begin(), v.end());</h2>
+            <ul>
+                <li>sort() is a function in the &lt;algorithm&gt; library.</li>
+                <ul>
+                    <li>It sorts elements in a range in ascending order by default</li>
+                    <li>syntax: sort(start_iterator, end_iterator);</li>
+                </ul>
+                <li>v.begin() points to the first element of the vector v</li>
+                <li>v.end() points just past the last element of the vector. (not the last element itself)</li>
+            </ul>
+            <p>So, sort(v.begin(), v.end()) sorts all elements of v from smallest to largest.</p>
+        </div>
+        <div class="image">
+            <h2>Example: </h2>
+            <img src="vector_and_funcs_examples/sort_ex.png" class="image-in-div">
+        </div>
+    </div>
+    <hr>
+
+    <h2>Vector of Vectors </h2>
+    <img src="vector_and_funcs_examples/vv_ex.png">
+    <hr>
+
+    <h2>Modularity (Functions)</h2>
     <p>
         <ul>
             <li>Organization, Readability</li>
@@ -77,7 +251,6 @@
             <li>Debugging</li>
             <li>Resuability</li>
         </ul>
-        to note:       sort(v.begin(),v.end());
     </p>
 
 </body>

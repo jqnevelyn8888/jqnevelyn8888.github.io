@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>input-output Notes</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <h1>Input/Output</h1>
+        <ul>
+            <li>#include &lt;iostream&gt; for cin, cout</li>
+            <li>#include &lt;iomanip&gt; for manipulators (setw, setprecision, etc.)</li>
+            <li>#include &lt;limits&gt; for numeric_limits (used with cin.ignore)</li>
+        </ul>
+        <hr>
+
+        <h2>Reading Input(cin)</h2>
+        <pre><code>
+    int x;
+    cin >> x;
+        </code></pre>
+        <ul>
+            <li>>> is extraction operator</li>
+            <li>Takes two operands: </li>
+            <ul>
+                <li>left operand: an input stream expression (cin, ifstream object)</li>
+                <li>right operand: variable to store input</li>
+            </ul>
+            <li>Automatically skips leading whitespace</li>
+            <li>Stops reading at whitespace for strings.</li>
+        </ul>
+        <hr>
+
+        <h2>cin.clear()</h2>
+        <p>It clears the error state flags of cin.</p>
+        <ol>
+            <li>If user enters the wrong type (ex. letters for an int), cin fails</li>
+            <li>When cin fails: </li>
+            <ul>
+                <li>It enters a failed state</li>
+                <li>It stops accepting more input</li>
+            </ul>
+            <li>cin.clear() resets the error state (makes cin usable again)</li>
+            <li>cin.ignore(removes the bad leftover input from the buffer)</li>
+            <li>if (cin >> x) checks if input was succesful (false if it failed)</li>
+            <ul>
+                <li>cin >> x returns the stream itself.</li>
+            </ul>
+        </ol>
+        <hr>
+        <div class="text-and-image">
+            <div class="text">
+                <h2>Example: </h2>
+                <ul>
+                    <li>If invalid input is entered...</li>
+                    <ul>
+                        <li>cin enters a fail state</li>
+                        <li>further operations stop working</li>
+                    </ul>
+                    <li>cin.clear() does NOT remove bad input from the buffer. It only resets the stream state.</li>
+                </ul>
+            </div>
+            <div class="image">
+                <img class="image-in-div" src="input-output_example_images/cin_clear_ignore_ex.png">
+            </div>
+            
+        </div>
+        <hr>
+
+        <h2>Output (cout)</h2>
+        <pre><code>
+    cout << "hello" << endl;
+        </code></pre>
+        <ul>
+            <li><< is the insertion operator</li>
+            <ul>
+                <li>The left operand is an output stream expression (like cout or an ofstream object)</li>
+                <li>The right operand is an expression of a simple type, string, or manipulator</li>
+            </ul>
+            <li>endl prints newline AND flushes buffer</li>
+            <li>'\n' prints newline only(faster)</li>
+        </ul>
+        <hr>
+
+        <h2>Printf() C-style Output</h2>
+        <div class="text-and-text">
+            <div class="text">
+                <h4>C-style Output</h4>
+                <ul>
+                    <li>Uses printf() function</li>
+                    <li>requires #include &lt;cstdio&gt; or &lt;stdio.h&gt;</li>
+                    <li>Uses format specifiers like %d, %f, %s</li>
+                    <li>not type-safe (compiler doesn't strictly check format vs variable type)</li>
+                    <li>procedural style</li>
+                </ul>
+            </div>
+            <div class="text">
+                <h4>C++ Output</h4>
+                <ul>
+                    <li>Uses cout object</li>
+                    <li>Requires #include &lt;iostream&gt;</li>
+                    <li>uses the << insertion operator</li>
+                    <li>type-safe (compiler checks data types automatically)</li>
+                    <li>object-oriented / stream-based style</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+
+        <h2>General printf Format Specifier: %[flags][width][.precision][length]specifier</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Specifier</th>
+                    <th>Type</th>
+                    <th>Example Format</th>
+                    <th>Example Output (value = 12.3456 or 42)</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>%d</th>
+                    <td>Integer (int)</td>
+                    <td>printf("%d", 42);</td>
+                    <td>42</td>
+                    <td>Prints a signed decimal integer</td>
+                </tr>
+                <tr>
+                    <th>%f</th>
+                    <td>Floating point (double/float)</td>
+                    <td>printf("%f", 12.3456);</td>
+                    <td>12.345600</td>
+                    <td>Default: 6 decimal places</td>
+                </tr>
+                <tr>
+                    <th>%.2f</th>
+                    <td>Floating point</td>
+                    <td>printf("%.2f", 12.3456);</td>
+                    <td>12.35</td>
+                    <td>Sets precision to 2 decimal places</td>
+                </tr>
+                <tr>
+                    <th>%10d</th>
+                    <td>Integer</td>
+                    <td>printf("%10d", 42);</td>
+                    <td>________42</td>
+                    <td>Field width of 10 (right-justified by default)</td>
+                </tr>
+                <tr>
+                    <th>%-10d</th>
+                    <td>Integer</td>
+                    <td>printf("%-10d", 42);</td>
+                    <td>42________</td>
+                    <td>Left-justified in field width of 10</td>
+                </tr>
+                <tr>
+                    <th>%10.2f</th>
+                    <td>Floating point</td>
+                    <td>printf("%10.2f", 12.3456);</td>
+                    <td>_____12.35</td>
+                    <td>Field width 10, precision 2, right-justified</td>
+                </tr>
+                <tr>
+                    <th>%s</th>
+                    <td>String</td>
+                    <td>printf("%s", "Hello");</td>
+                    <td>Hello</td>
+                    <td>Prints a string</td>
+                </tr>
+                <tr>
+                    <th>%c</th>
+                    <td>Character</td>
+                    <td>printf("%c", 'A');</td>
+                    <td>A</td>
+                    <td>Prints a single character</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <h2>Manipulators</h2>
+        <ul>
+            <li>Manipulators are used only in input and output statements to control format</li>
+            <li>Manipulators are found in both iostream and iomanip</li>
+            <li>Examples: </li>
+            <ul>
+                <li>Allow for a "field width" to align text</li>
+                <li>Change how values are displayed</li>
+                <ul>
+                    <li>Decimal, Hex, etc</li>
+                </ul>
+            </ul>
+
+        </ul>
+        <hr>
+        <h2>Manipulators in iostream</h2>
+        endl: terminate the output line ("\n equiv.")<br>
+        fixed: display in decimal point format with 6 decimal places as defult.<br>
+        showpoint: display a whole number in decimal format with 6 significant digits as default.
+        <hr>
+
+        <h2>Manipulators in iomanip</h2>
+        setw(n): fieldwidth specification manipulator
+        <p>Sets the width of the next value (int, float, String) to be printed over 'n' characters with right justification as default.</p>
+        <p>This manipulator is the ONLY one that is NOT persistent. This means that it only affects the very next item displayed.</p>
+        <p>Useful to create/align columns in output.</p>
+        setprecision(n): decimal number specification manipulator
+        <p>Sets ALL subsequent floating-point outputs to be displayed with the 'n' decimal places of accuracy provided that fixed manipulator has already been specified.</p>
+        <p>Default is usually 6 decimal places.</p>
+        scientific: set ALL subsequent floating point output to be displayed in scientific notaion. This is the default.<br>
+        hex: set ALL subsequent outputs to be displayed in decimal notion (base 10). Mainly used if you had preciously set output to scientific or hex, and need to change back.<br>
+        setfill(''): fills the unused field width with the specified character. By default, this is a space. Useful for adding leading zeros.<br>
+        left: set ALL subsequent outputs to left-justification within the printing field.
+        right: set ALL subsequent outputs to right-justification within the printing field. This is the default, like Java's .format().<br>
+        <hr>
+        <h2> setw() Quirks</h2>
+        <img src="iomanipulation_images/setw_quirks_ex.png">
+        <img src="iomanipulation_images/setw_quirks_ex2.png">
+    </body>
+
+</html>

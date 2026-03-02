@@ -15,7 +15,7 @@ td {
 
 img {
     max-width: 100%;
-    height: auto;
+    height: 300px;
 }
 
 
@@ -53,12 +53,39 @@ code {
 .text-and-image {
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
+}
+
+.text-and-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
 }
 
 .image {
-    padding-left: 20px;
+    padding: 20px;
+    max-width: 50%;
+}
+
+.text {
+    padding: 20x;
+    max-width: 50%;
+}
+
+
+.image-in-div {
+    object-fit: contain;
+    height: auto;
+    max-height: 300px;
+    border: black 2px solid;
 }
 
 .add-notes {
     text-align: left;
+}
+
+.table-img {
+    max-width: 100%;
+    height: auto;
+
 }
