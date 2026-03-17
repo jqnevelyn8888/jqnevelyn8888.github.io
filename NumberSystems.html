@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <nav class="navigation-bar">
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
+
+    <h1>Number Systems</h1>
+    <hr>
+
+    <h2>What is a Positional Number System?</h2>
+    <ul>
+        <li>A way to represent a number and its magnitude using the "position" a digit a placed.</li>
+        <li>Base determines the power base.</li>
+        <ul>
+            <li>Decimal 10<sup>p</sup></li>
+            <li>Binary 2<sup>p</sup></li>
+            <li>Hexadecimal 16<sup>p</sup></li>
+            <li>Octal 8<sup>p</sup></li>
+        </ul>
+        <li>Place starts with power 0</li>
+        <li>Base determines available symbols. The number of symbols is the base. Avaiable symbols (digits) are typically represented by 0 through (base - 1). Past "9", we typically use letters starting with A.</li>
+        <ul>
+            <li>Decimal: 0-9</li>
+            <li>Binary: 0-1</li>
+            <li>Hexadecimal: 0-F</li>
+            <li>Octal: 0-7</li>
+        </ul>
+    </ul>
+    <hr>
+
+    <div class="text-and-text">
+        <div class="text">
+            <h2>Decimal (Base 10)</h2>
+
+            <p>The weight of each digit of a decimal number depends on its relative position within the number.</p>
+            <ul>
+                <li>(Ex.) Decoding of the baae-10 number 1234</li>
+            </ul>
+            <img class="image-in-div" src="num-systems-ex/ex1.png" alt="num-systems example">
+        </div>
+        <div class="text">
+            <ul>
+                <li>1234: </li>
+                <ul>
+                    <li>1*1000 + 2*100 + 3*10 + 4*1</li>
+                </ul>
+                <li>Decimal consists of powers of 10</li>
+                <ul>
+                    <li>1000(10<sup>3</sup>), 100(10<sup>2</sup>), 10(10<sup>1</sup>), 1(10<sup>0</sup>)</li>
+                </ul>
+                <li>For each ascending place, its magnitude grows 10x</li>
+            </ul>
+            <p><b>Fractions:</b> Descending place, its magnitude is divided by 10.</p>
+            <ul>
+                <li>27.212 = 2(10) + 7(1) + 2(10<sup>-1</sup>) + 1(10<sup>-2</sup>) + 2(10<sup>-3</sup>)</li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+
+    <h2>Binary (Base 2)</h2>
+    <p>A digit in <b>binary</b>(0 or 1) is also called a bit. Only these two digits are used in binary.</p>
+    <p>Like a decimal number, the "weight" of each binary digit in a binary number depends on its relative position.</p>
+    <p>For each ascending place, magnitude grows 2x.</p>
+    <ul>
+        <li>(ex.) 1101</li>
+        <ul>
+            <li>1*8 + 1*4 + 0*2 + 1*1</li>
+        </ul>
+        <li>Binary consists of powers of 2</li>
+        <ul>
+            <li>1*(2<sup>3</sup>) + 1*(2<sup>2</sup>) + 0*(2<sup>2</sup>) + 1*(2<sup>0</sup>)</li>
+        </ul>
+        <li>For each ascending place, its magnitude grows 2x</li>
+    </ul>
+    <hr>
+
+    <h2>Distinguishing Base 2</h2>
+
+    
+    
+</body>
+</html>

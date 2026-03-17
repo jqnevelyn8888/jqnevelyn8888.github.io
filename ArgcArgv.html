@@ -7,7 +7,7 @@
         <title>ArgcArgv</title>
     </head>
     <body>
-        <h1>ArgcArgv</h1>
+        <h1>Argc/Argv</h1>
         <hr>
 
         <h2>Command Line Arguments</h2>
@@ -70,16 +70,60 @@
         </ul>
         <hr>
 
-        <h2>Example Usage</h2>
-        <img src="ArgcArgv_examples/Screenshot 2026-02-19 153620.png">
+        <div class="text-and-text">
+            <div class="text">
+                <pre><code>
+#include &lt;fstream&gt;
+#include &lt;iostream&gt;
+#include &lt;stdlib.h&gt;
+
+using namespace std;
+
+int main(int argc, char*argv[]) {
+
+    ifstream fin;
+    string filename = string(argv[1]);
+
+    fin.open(filename);
+    if (argc!=2) {
+        exit(EXIT_FAILURE)
+        return 1;
+    }
+
+    string line;
+    while (getline(fin, line)) {
+        cout << line << '\n';
+    }
+    fin.close()
+
+    return 0;
+}
+                </code></pre>
+            </div>
+            <div class="text">
+                <h2>Output</h2>
+                <pre>
+./a.out test.txt
+this is a line of text
+this is another line of text
+                </pre>
+            </div>
+        </div>
         <hr>
 
-        <h2>Convert Args with String Streams</h2>
-        <img src="ArgcArgv_examples/image.png">
+        <div class="text-and-image">
+            <div class="image">
+                <h2>Convert Args with String Streams</h2>
+                <img src="ArgcArgv_examples/image.png" class="image-in-div">
+            </div>
+            <div class="text">
+               <h2>Error Checking</h2>
+                <p>It is good practice to check <b>argc</b> at the beginning of the program to verify the user ran the program with the correct number of arguments.</p>
+                <p>Always check argc before argv.</p>
+            </div>
+        </div>
         <hr>
         
-        <h2>Error Checking</h2>
-        <p>It is good practice to check <b>argc</b> at the beginning of the program to verify the user ran the program with the correct number of arguments.</p>
-        <p>Always check argc before argv.</p>
+        
     </body>
 </html>

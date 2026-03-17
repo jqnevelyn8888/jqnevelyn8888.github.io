@@ -11,34 +11,14 @@
 
     <body>
         <h1>File Streams</h1>
-        <hr>
-
-        <h2>Topics</h2>
-        <ul>
-            <li>What is a file stream?</li>
-            <li>Steps</li>
-            <li>Header &lt;fstream&gt;</li>
-            <li>Input files (iftstream)</li>
-            <ul>
-                <li>opening</li>
-                <li>fail checking</li>
-                <li>extracting</li>
-                <li>line-oriented input</li>
-            </ul>
-            <li>Output files (ofstream)</li>
-            <ul>
-                <li>opening</li>
-                <li>fail checking</li>
-                <li>insertion</li>
-                <li>formatted insertion (iomanip)</li>
-            </ul>
-        </ul>
-        <hr>
-
-        <h2>File Streams</h2>
+        <p>A file stream is an object that allows your program to read data from a file or write data to a while, instead of using the keyboard and screen.</p>
         <ul>
             <li>We can read and write from files very similarly to reading and writing to and from the console</li>
             <li>This task is called working with file streams</li>
+            <li><b>ifstream</b> = input file stream</li>
+            <li><b>ofstream</b> = output file stream</li>
+            <li><b>fstream</b> = can do both</li>
+            <li>#include &lt;fstream&gt;</li>
         </ul>
         <hr>
 
@@ -77,91 +57,203 @@
         </ol>
         <hr>
 
-        <h2>Header</h2>
-        <ul>
-            <li>File Streams</li>
-            <ul>
-                <li>#include &lt;fstream&gt; (ifstream) --> data from DISK to RAM</li>
-                <li>Output File Stream (ofstream) --> data from RAM to DISK</li>
-            </ul>
-        </ul>
+        <h2>Declaring a File Stream Object</h2>
+        <pre><code>
+        ifstream infile;
+        ofstream outfile;
+        </code></pre>
         <hr>
 
-        <h2>.open()</h2>
-        <p>Used to open BOTH input files for reading and to open output files for writing</p>
-        <ul>
-            <li>Links a stream object with a file on your file system</li>
-            <li>Places a file reading marker at the beginning of the file, pointing to the first character in it.</li>
-            <li>If the input file doesn't exist, it won't be opened</li>
-            <li>If you don't have permission to open the input file, it won't be opened</li>
-            <li>If the output file does not exist, a new file with that name is created</li>
-            <li>If the output file already exists, it is erased (but there are ways to open files for appending content rather than overwriting)</li>
-        </ul>
-        <hr>
-
-        <h2>Example</h2>
-        <img src="file-streams_examples/example1.png">
-        <hr>
-
-        <h2>.fail()</h2>
-        <ul>
-            <li>Returns false if the file was able to be opened</li>
-            <li>Returns true if it couldn't open the file</li>
-            <ul>
-                <li>Doesn't exist</li>
-                <li>Don't have permission</li>
-            </ul>
-        </ul>
-        <hr>
-
-        <h2>is_open()</h2>
-        <ul>
-            <li>Returns true if the file is currently opened and linked to the file stream</li>
-            <li>Returns false if it couldn't open the file</li>
-            <ul>
-                <li>Doesn't exist or doesn't have permission</li>
-            </ul>
-        </ul>
-        <hr>
-
-        <h2>.close()</h2>
-        <ul>
-            <li>de-links the file from the stream</li>
-            <li>ALWAYS close the file when you're done with it.</li>
-            <li>Every .open() should have a matching .close()</li>
-            <li>Closing a file you were writing to is equivalent to saving a file.</li>
-        </ul>
-        <hr>
-
-        <h2>Extraction Operator >></h2>
-        <ul>
-            <li>ifstream uses the extraction operator exactly like cin</li>
-        </ul>
-        <img src="file-streams_examples/example2.png">
-        <hr>
-
-        <h2>Line Oriented Input</h2>
-        <ul>
-            <li>fin >> will skip preceding whitespace and extract until the next whitespace.</li>
-            <li>Instead, you can grab one line at a time with getline()</li>
-            <li>getline(fin, line)</li>
-            <ul>
-                <li>getline returns:</li>
+        <div class="text-and-text">
+            <div class="text">
+                <h2>.open()</h2>
+                <p>Used to open BOTH input files for reading and to open output files for writing</p>
                 <ul>
-                    <li>true - if it was able to get a line and put it into line</li>
-                    <li>false - if it was not</li>
+                    <li>Links a stream object with a file on your file system</li>
+                    <li>Places a file reading marker at the beginning of the file, pointing to the first character in it.</li>
+                    <li>If the input file doesn't exist, it won't be opened</li>
+                    <li>If you don't have permission to open the input file, it won't be opened</li>
+                    <li>If the output file does not exist, a new file with that name is created</li>
+                    <li>If the output file already exists, it is erased (but there are ways to open files for appending content rather than overwriting)</li>
                 </ul>
-                <li>getline will grab a line and put it into a string line</li>
-            </ul>
-        </ul>
-        <img src="file-streams_examples/example3.png">
+            </div>
+            <div class="text">
+                <h2>Example</h2>
+                <pre><code>
+#include &lt;fstream&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+int main(void) {
+    ifstream fin;
+    fin.open("myfile.txt");
+    if (!fin.is_open()) {
+        cout << "Could not open file\n";
+    }
+
+    string data;
+    fin >> data;
+    cout << "File contained: " << data << '\n';
+    fin.close();
+
+    return 0;
+}
+                </code></pre>
+                <p><b>OUTPUT: </b>File contained: Hello</p>
+            </div>
+        </div>
+        
         <hr>
 
-        <h2>Output File Streams</h2>
-        <p>ofstream acts just like cout except it writes to a file, not the console.</p>
-        <ul>
-            <li>Can even add formatting manipulators we encountered earlier (from iomanip)</li>
-        </ul>
+        <div class="text-and-text">
+            <div class="text">
+                <h2>.fail()</h2>
+                <ul>
+                    <li>Returns false if the file was able to be opened</li>
+                    <li>Returns true if it couldn't open the file</li>
+                    <ul>
+                        <li>Doesn't exist</li>
+                        <li>Don't have permission</li>
+                    </ul>
+                </ul>
+            </div>
+            <div class="text">
+                <h2>is_open()</h2>
+                <ul>
+                    <li>Returns true if the file is currently opened and linked to the file stream</li>
+                    <li>Returns false if it couldn't open the file</li>
+                    <ul>
+                        <li>Doesn't exist or doesn't have permission</li>
+                    </ul>
+                </ul>
+            </div>
+            <div class="text">
+                <h2>.close()</h2>
+                <ul>
+                    <li>de-links the file from the stream</li>
+                    <li>ALWAYS close the file when you're done with it.</li>
+                    <li>Every .open() should have a matching .close()</li>
+                    <li>Closing a file you were writing to is equivalent to saving a file.</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+
+        <div class="text-and-text">
+            <div class="text">
+                <h2>Extraction Operator >></h2>
+                <ul>
+                    <li>ifstream uses the extraction operator exactly like cin</li>
+                </ul>
+            </div>
+            <div class="text">
+                <pre><code>
+#include &lt;fstream&gt;
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int main() {
+    ifstream fin;
+    int a, b, c;
+    fin.open("myfile2.txt");
+    fin >> a >> b >> c;
+    cout << "I got three integers: " << a << " " << b << " " << c << endl;
+    fin.close();
+
+    return 0;
+}
+                </code></pre>
+                <p><b>OUTPUT: </b>I got three integers: 1 2 3</p>
+            </div>
+        </div>
+        <hr>
+
+        <div class="text-and-text">
+            <div class="text">
+                <h2>Line Oriented Input</h2>
+                <ul>
+                    <li>fin >> will skip preceding whitespace and extract until the next whitespace.</li>
+                    <li>Instead, you can grab one line at a time with getline()</li>
+                    <li>getline(fin, line)</li>
+                    <ul>
+                        <li>getline returns:</li>
+                        <ul>
+                            <li>true - if it was able to get a line and put it into line</li>
+                            <li>false - if it was not</li>
+                        </ul>
+                        <li>getline will grab a line and put it into a string line</li>
+                    </ul>
+                </ul>
+            </div>
+            <div class="text">
+                <pre><code>
+ifstream fin;
+string line;
+fin.open("myfile.txt");
+while (getline(fin, line)) {
+    cout << "Line = " << line << '\n';
+fin.close()
+}
+                </code></pre>
+                <p><b>OUTPUT: (not include the bullet points)</b></p>
+                <ul>
+                    <li>Line = Hello World</li>
+                    <li>Line = I am</li>
+                    <li>Line = Evelyn Sama</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+
+        <div class="text-and-text">
+            <div class="text">
+                <h2>Output File Streams</h2>
+                <p>ofstream acts just like cout except it writes to a file, not the console.</p>
+                <ul>
+                    <li>Can even add formatting manipulators we encountered earlier (from iomanip)</li>
+                </ul>
+                <p><b>Output: </b></p>
+                <pre>
+Senti was really frustrated
+Because Fu Hua was treating her like a child
+Senti wants to prove to Fu Hua she isn't a child.
+Fu Hua is                         500000 years old while Senti is about 6 years old.
+                </pre>
+            </div>
+            <div class="text">
+                <pre><code>
+#include &lt;fstream&gt;
+#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+
+using namespace std;
+
+int main(void) {
+
+    ofstream outfile("SentiHua.txt");
+
+    outfile << "Senti was really frustrated\n";
+    outfile << "Because Fu Hua was treating her like a child\n";
+    outfile << "Senti wants to prove to Fu Hua she isn't a child. \n";
+    outfile << "Fu Hua is " << setw(30) << 500000 << " years old while Senti is about 6 years old.";
+
+    outfile.close();
+
+    ifstream infile("SentiHua.txt");
+    string line;
+    while (getline(infile, line)) {
+        cout << line <<'\n';
+    }
+    infile.close();
+
+    return 0;
+}
+                </code></pre>
+            </div>
+        </div>
+        
+
         
         
     </body>

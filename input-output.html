@@ -179,12 +179,12 @@
                 </tr>
             </tbody>
         </table>
+        <hr>
 
 
         <h2>Manipulators</h2>
         <ul>
-            <li>Manipulators are used only in input and output statements to control format</li>
-            <li>Manipulators are found in both iostream and iomanip</li>
+            <li>In C++, I/O manipulators are special functions or objects that you can insert into your cin or cout streams to control formatting.</li>
             <li>Examples: </li>
             <ul>
                 <li>Allow for a "field width" to align text</li>
@@ -193,32 +193,134 @@
                     <li>Decimal, Hex, etc</li>
                 </ul>
             </ul>
-
+            <li>Manipulators modify how data is displayed or read without changing the actual value.</li>
         </ul>
-        <hr>
-        <h2>Manipulators in iostream</h2>
-        endl: terminate the output line ("\n equiv.")<br>
-        fixed: display in decimal point format with 6 decimal places as defult.<br>
-        showpoint: display a whole number in decimal format with 6 significant digits as default.
+        <pre><code>
+    #include <iostream>
+    #include <iomanip>
+    using namespace std;
+
+    double pi = 3.14159;
+    cout << fixed << setprecision(2) << pi << endl; // output: 3.14
+        </code></pre>
+        <ol>
+            <li><b>fixed</b></li>
+            <ul>
+                <li><b>Type:</b> persistent manipulator</li>
+                <li><b>What is does: </b>Forces floating point numbers to be printed in fixed-point notation rather than scientific(1.234e+00)</li>
+                <li><b>Effect: </b>Ensures the number is displayed as a regular decimal number.</li>
+                <li>Without fixed, it might show scientific notation for very large/small numbers.</li>
+            </ul>
+            <li>setprecision(2)</li>
+            <ul>
+                <li><b>Type:</b> persistent manipulator</li>
+                <li><b>What is does: </b>Controls the number of digits printed.</li>
+                <ul>
+                    <li>Without fixed: setprecision(n) controls the <b>total number of significant digits</b>, not decimal places.</li>
+                    <li>With fixed: setprecision(n) now controls the <b>number of digits after the decimal point</b></li>
+                </ul>
+                <li>So it rounds pi to 2 decimal places because we are using fixed.</li>
+            </ul>
+            <li>Each manipulator (fixed, setprecision(2)) modifies the stream's behavior for everything that comes after it. </li>
+            <li>Order matters. Fixed must come before setprecision(2) to ensure it controls decimal places instead of significant digits.</li>
+        </ol>
         <hr>
 
-        <h2>Manipulators in iomanip</h2>
-        setw(n): fieldwidth specification manipulator
-        <p>Sets the width of the next value (int, float, String) to be printed over 'n' characters with right justification as default.</p>
-        <p>This manipulator is the ONLY one that is NOT persistent. This means that it only affects the very next item displayed.</p>
-        <p>Useful to create/align columns in output.</p>
-        setprecision(n): decimal number specification manipulator
-        <p>Sets ALL subsequent floating-point outputs to be displayed with the 'n' decimal places of accuracy provided that fixed manipulator has already been specified.</p>
-        <p>Default is usually 6 decimal places.</p>
-        scientific: set ALL subsequent floating point output to be displayed in scientific notaion. This is the default.<br>
-        hex: set ALL subsequent outputs to be displayed in decimal notion (base 10). Mainly used if you had preciously set output to scientific or hex, and need to change back.<br>
-        setfill(''): fills the unused field width with the specified character. By default, this is a space. Useful for adding leading zeros.<br>
-        left: set ALL subsequent outputs to left-justification within the printing field.
-        right: set ALL subsequent outputs to right-justification within the printing field. This is the default, like Java's .format().<br>
+        <h2>Manipulators in iostream and iomanip</h2>
+        <table border="1" cellpadding="8" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Manipulator</th>
+                    <th>Header / Source</th>
+                    <th>Example Code</th>
+                    <th>Persistence</th>
+                    <th>Description / Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>endl</th>
+                    <td>&lt;iostream&gt;</td>
+                    <td><pre>cout &lt;&lt; "Hello" &lt;&lt; endl;</pre></td>
+                    <td>N/A</td>
+                    <td>Terminates the output line (like "\n") and flushes the output buffer.</td>
+                </tr>
+                <tr>
+                    <th>fixed</th>
+                    <td>&lt;iomanip&gt;</td>
+                    <td><pre>cout &lt;&lt; fixed &lt;&lt; 3.14159;</pre></td>
+                    <td>Persistent</td>
+                    <td>Displays floating-point numbers in decimal format; works with setprecision() to control decimals.</td>
+                </tr>
+                <tr>
+                    <th>showpoint</th>
+                    <td>&lt;iomanip&gt;</td>
+                    <td><pre>cout &lt;&lt; showpoint &lt;&lt; 3;</pre></td>
+                    <td>Persistent</td>
+                    <td>Always shows the decimal point for floating-point numbers, even whole numbers (e.g., 3 → 3.000000).</td>
+                </tr>
+                <tr>
+                    <th>setw(n)</th>
+                    <td>&lt;iomanip&gt;</td>
+                    <td><pre>cout &lt;&lt; setw(10) &lt;&lt; 42;</pre></td>
+                    <td>Temporary (next output only)</td>
+                    <td>Sets the width of the next output to 'n' characters; right-justified by default. Useful for aligning columns.</td>
+                </tr>
+                <tr>
+                    <th>setprecision(n)</th>
+                    <td>&lt;iomanip&gt;</td>
+                    <td><pre>cout &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt; 3.14159;</pre></td>
+                    <td>Persistent</td>
+                    <td>Controls decimal places if fixed/scientific, or significant digits otherwise. Default is 6.</td>
+                </tr>
+                <tr>
+                    <th>scientific</th>
+                    <td>&lt;iomanip&gt;</td>
+                    <td><pre>cout &lt;&lt; scientific &lt;&lt; 31415.9;</pre></td>
+                    <td>Persistent</td>
+                    <td>Displays floating-point numbers in scientific notation (e.g., 3.141590e+04).</td>
+                </tr>
+                <tr>
+                    <th>hex</th>
+                    <td>&lt;iomanip&gt;</td>
+                    <td><pre>cout &lt;&lt; hex &lt;&lt; 255;</pre></td>
+                    <td>Persistent</td>
+                    <td>Displays integers in hexadecimal. Use dec to revert to decimal output.</td>
+                </tr>
+                <tr>
+                    <th>dec</th>
+                    <td>&lt;iomanip&gt;</td>
+                    <td><pre>cout &lt;&lt; dec &lt;&lt; 255;</pre></td>
+                    <td>Persistent</td>
+                    <td>Displays integers in decimal format. Useful after hex or oct manipulators.</td>
+                </tr>
+                <tr>
+                    <th>setfill(c)</th>
+                    <td>&lt;iomanip&gt;</td>
+                    <td><pre>cout &lt;&lt; setfill('0') &lt;&lt; setw(5) &lt;&lt; 42;</pre></td>
+                    <td>Persistent</td>
+                    <td>Fills unused field width with the specified character (default is space). Useful for leading zeros.</td>
+                </tr>
+                <tr>
+                    <th>left</th>
+                    <td>&lt;iomanip&gt;</td>
+                    <td><pre>cout &lt;&lt; left &lt;&lt; setw(10) &lt;&lt; 42;</pre></td>
+                    <td>Persistent</td>
+                    <td>Left-justifies all subsequent output within the field width.</td>
+                </tr>
+                <tr>
+                    <th>right</th>
+                    <td>&lt;iomanip&gt;</td>
+                    <td><pre>cout &lt;&lt; right &lt;&lt; setw(10) &lt;&lt; 42;</pre></td>
+                    <td>Persistent</td>
+                    <td>Right-justifies all subsequent output within the field width (default).</td>
+                </tr>
+            </tbody>
+        </table>
         <hr>
-        <h2> setw() Quirks</h2>
-        <img src="iomanipulation_images/setw_quirks_ex.png">
-        <img src="iomanipulation_images/setw_quirks_ex2.png">
+
+        <h2>setw() Quirks & Other Examples</h2>
+        <img src="input-output_example_images/setw_quirks_ex.png">
     </body>
 
 </html>
