@@ -85,6 +85,139 @@
     <hr>
 
     <h2>Distinguishing Base 2</h2>
+    <ul>
+        <li>1101...</li>
+        <ul>
+            <li>Base 10: One thousand, one hundred, one</li>
+            <ul>
+                <li>1(1000) + 1(100) + 0(10) + 1(1)</li>
+            </ul>
+            <li>Base 2: 13</li>
+            <ul>
+                <li>1(8) + 1(4) + 0(2) + 1(1)</li>
+            </ul>
+        </ul>
+        <li>Distinguish from base 10 by prefix or suffix</li>
+        <ul>
+            <li>0b1101 = Binary 1101 (0b means binary) -- how you represent binary in C++ and assembly</li>
+            <li>1101<sub>2</sub> = Binary 1101 (subscript 2 means binary)</li>
+        </ul>
+    </ul>
+    <hr>
+
+    <h2>Fractions in Base 2</h2>
+    <ul>
+        <li>Descending place, its magnitude is divided by 2.</li>
+        <li>Basically how we do base 10 but instead of 10 its 2.</li>
+        <li>(ex.) 10.110<sub>2</sub> = 2.75<sub>10</sub></li>
+        <ul>
+            <li>1(2) + 0(1) + 1(2<sup>-1</sup>) + 1(2<sup>-2</sup>) + 0(2<sup>-3</sup>) = 2.75</li>
+        </ul>
+    </ul>
+    <hr>
+
+    <h2>Why Binary?</h2>
+    <ul>
+        <li>A binary system just requires two distinct states. These can be represented by: on (1) or off(0), true or false, yes or no, etc.</li>
+        <li>The basic unit of information that a computer uses consists of 8 bits, which is called a "byte"</li>
+        <ul>
+            <li>0b0101_0011 = 1 byte</li>
+        </ul>
+    </ul>
+    <hr>
+
+    <div class="text-and-text">
+        <div class="text">
+            <h2>Hexadecimal Digits</h2>
+            <ul>
+                <li>The hexadecimal number system has a base of 16</li>
+                <li>digits>9 are represented by a letter A-F</li>
+                <ul>
+                    <li>A = 10</li>
+                    <li>B = 11</li>
+                    <li>C = 12</li>
+                    <li>D = 13</li>
+                    <li>E = 14</li>
+                    <li>F = 15</li>
+                </ul>
+            </ul>
+        </div>
+        <div class="text">
+            <h2>Hexadecimal (Base 16)</h2>
+            <ul>
+                <li>19AC = 1*(16<sup>3</sup>) + 9*(16<sup>2</sup>) + A*(16<sup>1</sup>) + C*(16<sup>0</sup>)</li>
+                <li>For each place, its magnitude grows 16x</li>
+            </ul>
+            <img class="image-in-div" src="num-systems-ex/ex2.png">
+        </div>
+    </div>
+    <hr>
+
+    <h2>Distinguishing Base 16</h2>
+    <ul>
+        <li>hex 16 = 1(16<sup>1</sup>) + 6(16<sup>0</sup>) = 16 + 6 = 22 </li>
+        <li>0x16 = Hex 16 (0x means hex)</li>
+        <ul>
+            <li>This is how you represent hex in C++ and assembly</li>
+        </ul>
+        <li>16<sub>16</sub> = Hex 16 (superscript 16 means hex)</li>
+    </ul>
+    <hr>
+    
+    <h2>Fractions (Base 16)</h2>
+    <ul>
+        <li>Descending place, its magnitude is divided by 16</li>
+        <li>(ex.) 2E.1AA<sub>16</sub> = 46.10400...</li>
+        <ul>
+            <li>2(16) + E(1) + 1(16<sup>-1</sup>) + A(16<sup>-2</sup>)</li>
+            <li>= 2(16) + 14(1) + 1(16<sup>-1</sup>) + 10(16<sup>-2</sup>)</li>
+            <li>= 46.1...</li>
+        </ul>
+    </ul>
+    <hr>
+
+    <h2>Number System Comparison</h2>
+    <img src="num-systems-ex/ex3.png" class="image-in-div">
+    <hr>
+
+    <h2>Reference</h2>
+    <table border="1">
+        <tr>
+            <th>Base 10</th>
+            <th>Binary (Base 2)</th>
+            <th>Hexadecimal (Base 16)</th>
+        </tr>
+
+        <tr><td>0</td><td>0000</td><td>0</td></tr>
+        <tr><td>1</td><td>0001</td><td>1</td></tr>
+        <tr><td>2</td><td>0010</td><td>2</td></tr>
+        <tr><td>3</td><td>0011</td><td>3</td></tr>
+        <tr><td>4</td><td>0100</td><td>4</td></tr>
+        <tr><td>5</td><td>0101</td><td>5</td></tr>
+        <tr><td>6</td><td>0110</td><td>6</td></tr>
+        <tr><td>7</td><td>0111</td><td>7</td></tr>
+        <tr><td>8</td><td>1000</td><td>8</td></tr>
+        <tr><td>9</td><td>1001</td><td>9</td></tr>
+        <tr><td>10</td><td>1010</td><td>A</td></tr>
+        <tr><td>11</td><td>1011</td><td>B</td></tr>
+        <tr><td>12</td><td>1100</td><td>C</td></tr>
+        <tr><td>13</td><td>1101</td><td>D</td></tr>
+        <tr><td>14</td><td>1110</td><td>E</td></tr>
+        <tr><td>15</td><td>1111</td><td>F</td></tr>
+    </table>
+
+    <hr>
+
+    Notes:
+    <ul>
+        <li>Vacumn tubes first before transistors</li>
+        <li>ENIAC was first true general all purpose machine</li>
+        <li>Moore's Law: The number of transistors on a microchip roughly doubles about every two years, increasing computing power while lowering cost per transistor.</li>
+        <li>Rock's Law: The cost of building semiconductor manufacturing plants doubles roughly every four years, making chip production increasingly expensive.</li>
+    </ul>
+    
+
+
 
     
     
