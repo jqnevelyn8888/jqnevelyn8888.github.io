@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Sorting and Searching</title>
+</head>
+<body>
+    <h1>Sorting and Searching</h1>
+    <hr>
+
+    <h2>Vocabulary for Sorting</h2>
+    <ul>
+        <li>Pass</li>
+        <ul>
+            <li>We have a "pass" through a vector if every element is looked at, and we are going back to the beginning index to repeat steps in the algorithm (this happens in Bubble Sort)</li>
+        </ul>
+        <li>Ascending Order</li>
+        <li>Descending Order</li>
+    </ul>
+    <hr>
+
+    <h2>Bubble Sort</h2>
+    <ul>
+        <li>Bubble sort works by repeatedly swapping adjacent elements if they are in wrong order.</li>
+        <ul>
+            <li>The algorithm will take the first pair in the list (index 0 and 1), see if they are in the correct order, and if not, swap.</li>
+            <li>Then the algorithm will take the next pair (potentially new index 1, index 2), and repeat.</li>
+        </ul>
+        <li>The algorithm is named Bubble Sort because the elements with greater value than their surrounding elements "bubble" towards the end of the list.</li>
+    </ul>
+    <br>
+    <img class="img-in-div" style="display: block; margin: 0 auto;" src="SortingSearching_img/img1.png">
+    <h3>Bubble Sort Pseudocode</h3>
+    <pre><code>
+begin BubbleSort(list)
+
+    for all elements of list
+        if list[i] > list[i+1]
+            swap(list[i], list[i+1])
+        end if
+    end for
+
+    return list
+end BubbleSort
+    </code></pre>
+    <hr>
+
+    <h2>Selection Sort</h2>
+    <ul>
+        <li>Selection sort works by stepping through each index of the vector (think of this index as the "selected" index) and placing the correct value in that index. It will not move again.</li>
+        <ul>
+            <li>We start at index 0 as the selected index. We look at every value to the right of the selected index and find the smallest value. We swap the value at the selected index (0) with the smallest value found.</li>
+            <li>Next, we move the selected index to index 1. We repeat to find the smallest value, and swap.</li>
+            <li>If there are no values to the right of the selected index that are smaller, no swap will occur.</li>
+        </ul>
+        <li>Unlike Bubble Sort, Selection Sort does not go back to the previous indexes at any point.</li>
+        <li>Selection sort is the only algorithm where we decide the *final* resting spot of a value.</li>
+        <li>If we are running the algorithm and the selected index is 6 currently, then we know indexes 0-4 are sorted and their values will not change.</li>
+    </ul>
+    <h3>Selection Sort Pseudocode</h3>
+    <pre><code>
+begin SelectionSort(list)
+    n: size of list
+    
+    for i = 1 to n - 1
+        /* set current element as minimum */
+        min = i
+
+        /* find what element is actually the minimum */
+        for j = i + 1 to n
+            if list[j] < list[min]
+                min = j
+            end if
+        end for
+
+        /* swap the minimum element with the current element */
+        if min != i then
+            swap(list[i], list[min])
+        end if
+    end for
+end SelectionSort
+    </code></pre>
+    <hr>
+
+    <h2>Insertion Sort</h2>
+    <ul>
+        <li>Insertion sort works by splitting the vector into two parts, the sorted portion, and the unsorted portion.</li>
+        <li>Selection sort also has a sorted portion, but insertion sort's sorted portion is only RELATIVE to the other items in the sorted porition. Their final resting index is not determined and may change as other values are moved to the sorted portion.</li>
+        <ol>
+            <li>Begin with index 0 as the "sorted" portion (a sorted portion consisting of one item).</li>
+            <li>Take the first index to the right of the sorted portion (i.e. the first element in the unsorted portion), and look backwards through the unsorted portion and "insert" the value where is belongs.</li>
+            <li>This is the most common way people sort playing cards in their hand.</li>
+        </ol>
+    </ul>
+    <img class="img-in-div" style="display: block; margin: 0 auto;" src="SortingSearching_img/img2.png">
+    <h3>Insertion Sort Pseudocode</h3>
+    <pre><code>
+begin InsertionSort(list)
+    n: size of list
+
+    for i = 1 to n - 1
+        key = list[i]
+        j = i - 1
+
+        while j >= 0 and list[j] > key
+            list[j + 1] = list[j]
+            j = j - 1
+        end while
+
+        list[j + 1] = key
+    end for
+end InsertionSort
+    </code></pre>
+    <hr>
+
+    <h2>Merge Sort</h2>
+    <ul>
+        <li>One of the "divide and conquer" algorithms.</li>
+        <li>Divide the array into subarrays</li>
+        <ul>
+            <li>Keep dividing until get to size 1 arrays</li>
+            <li>Visualize each new division as a level (write vertically)</li>
+            <li>Start merging at the lowest level</li>
+            <li>As you move up each level you will be merging sorted arrays</li>
+            <li>Time complexity is O(nlog n)</li>
+        </ul>
+    </ul>
+    <img class="img-in-div" style="display: block; margin: 0 auto;" src="SortingSearching_img/img3.png">
+
+    <hr>
+
+    <h2>Binary Search Tree</h2>
+    <ul>
+        <li>Great for searching, but also gives us sorted data via a very simple O(N) algorithm called "in-order traversal."</li>
+        <li>Must pay a one-time cost for setup (memory and CPU cycles)</li>
+        <ul>
+            <li>After setup, can use extremely fast search and sort an infinite number of times (in theory)</li>
+        </ul>
+    </ul>
+    <img class="img-in-div" style="display: block; margin: 0 auto;" src="SortingSearching_img/img4.png">
+    <hr>
+
+    <h2>Linear Search</h2>
+    <ul>
+        <li>Linear Search is a very simple algorithm, essentially a for loop.</li>
+        <li>A sequential search is made over items one by one. Each item is checked and if a match is found, then that item is returned, otherwise the search continues till the end of the list.</li>
+    </ul>
+    <h3>Linear Search Pseudocode</h3>
+    <pre><code>
+begin LinearSearch(list, target)
+    for i = 0 to length(list) - 1
+        if list[i] == target
+            return i
+        end if
+    end for
+    return -1
+end LinearSearch
+    </code></pre>
+    <hr>
+
+    <h2>Binary Search</h2>
+    <li>Binary is a much more efficient searching algorithm (i.e. will find matches faster, on average).</li>
+    <li>Algorithm:</li>
+    <ol>
+        <li>Make sure the list is sorted before starting the algorithm.</li>
+        <li>Designate a beginning, midpoint, and end for the list</li>
+        <li>See if the value you are searching for is greater than, less than, or equal to the midpoint.</li>
+        <li>If it's greater than the midpoint, remove the bottom half from the searching area and repeat. If its less than the midpoint, remove the top half from the searching area and repeat.</li>
+        <li>If it's equal to the midpoint, then you have a match. If you have reached a searching area of size 1, and still haven't found a match, then the value is not in the list. This is implemented by checking if the "end" is less than the "begin"</li>
+    </ol>
+    <img class="img-in-div" style="display: block; margin: 0 auto;" src="SortingSearching_img/img5.png">
+    <h3>Binary Search Pseudocode</h3>
+    <pre><code>
+begin BinarySearch(A, n, x)
+    A : sorted array
+    n : size of array
+    x : value to be searched
+
+    set lowerbound = 1
+    set upperbound = n
+
+    while x not found
+        if upperbound < lowerbound
+            return "not found"
+        end if
+
+        set midPoint = (lowerbound + upperbound) / 2
+
+        if A[midPoint] == x
+            return midPoint
+        else if A[midPoint] < x
+            set lowerbound = midPoint + 1
+        else
+            set upperbound = midPoint - 1
+        end if
+    end while
+end BinarySearch
+    </code></pre>
+    <hr>
+
+    <h2>Dictionaries (Hash Tables)</h2>
+    <p>Different languages use different terms for the same data structure</p>
+    <ul>
+        <li>There are implementation variants, but the main idea is identical:</li>
+        <ul>
+            <li>Generate a code based on the data itself. The code will either serve as the storage address or will lead us to the storage address (via an encoding)</li>
+            <li>Effectively, this means that searching for data in a dictionary/hash table is O(1) i.e., instant/direct, without any actual search algorithm needed.</li>
+        </ul>
+    </ul>
+    <img class="img-in-div" style="display: block; margin: 0 auto;" src="SortingSearching_img/img6.png">
+    <hr>
+</body>
+</html>
