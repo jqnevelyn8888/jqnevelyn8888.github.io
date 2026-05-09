@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes and Structs</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>A brief guide to creating your own C++ classes</h1>
+
+<h2>Structs - a starting point</h2>
+<p>
+Before considering C++ classes, recall C structs. A C struct is kind of like your own custom variable type. 
+A struct can consist of multiple different variable types. Some may be primitives (int, double, etc.); 
+some may be more complex -- perhaps vectors or even other structs. Structs allow us to combine or unify 
+all of these into a new variable type. A simple example is the Pixel struct that we encountered in an earlier lab: 
+this struct combined three integers (RGB) because most people find it more convenient to think of images 
+in terms of pixels rather than lists of numbers.
+</p>
+
+<h2>How is a C++ class different from a struct?</h2>
+<p>
+A class in C++ can be thought of as a more complex and powerful C struct. One can still create a single 
+"container" for multiple different variable types using classes. However, in addition to containing 
+properties (also known as fields), classes also contain methods. Methods are actions -- so unlike a struct, 
+an object of some class-type can "do stuff". For example, a bank account object might be able to report its 
+current balance via a method called getCurrentBalance(), allow for additional deposits via a method with a 
+signature deposit(double amount), etc.
+</p>
+
+<h2>Simple example of a C++ class</h2>
+<p>Let us consider the following example problem:</p>
+
+<p><strong>Create a class called Textbook that represents a college textbook.</strong></p>
+
+<p>Your class should store:</p>
+<ul>
+    <li>The title</li>
+    <li>The edition number (a whole number)</li>
+</ul>
+
+<p>Your class should be able to:</p>
+<ul>
+    <li>Display the title and edition number</li>
+    <li>Display a reminder by printing "Don't forget to check for a newer edition!"</li>
+</ul>
+
+<p>In your main function:</p>
+<ul>
+    <li>Create a Textbook object with a title and edition of your choosing</li>
+    <li>Call the method to display its information</li>
+    <li>Call the method to display the reminder</li>
+</ul>
+
+<p>The corresponding solution would look as follows:</p>
+
+<pre><code>
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Textbook {
+public:
+    string title; //these are the properties (fields) -- information that the object contains
+    int edition;
+
+    // the methods (actions) the object can take are defined below:
+    void displayInfo() {
+        cout &lt;&lt; "Title: " &lt;&lt; title &lt;&lt; endl;
+        cout &lt;&lt; "Edition: " &lt;&lt; edition &lt;&lt; endl;
+    }
+
+    void displayReminder() {
+        cout &lt;&lt; "Don't forget to check for a newer edition!" &lt;&lt; endl;
+    }
+};
+
+int main() {
+    Textbook t;
+    t.title = "Introduction to Computer Science";
+    t.edition = 3;
+
+    t.displayInfo();
+    t.displayReminder();
+
+    return 0;
+}
+</code></pre>
+
+<p>
+Note: the class defined above does not contain a constructor. This is ok for very simple objects, 
+but for more complex programming problems, we will most likely need a constructor (and often, more than one). 
+A constructor is a special-purpose method. We do not call it explicitly. Rather, it is invoked automatically 
+when a new object of that class is created. Depending on the language/program, a new object is typically 
+created via declaration of a variable of that class type or the use of the new keyword.
+</p>
+
+<h2>A more complex example: adding constructors</h2>
+<p>Let's consider a more complex problem that necessitates more complex objects:</p>
+
+<p><strong>Create a class called Notebook that represents a student's notebook.</strong></p>
+
+<p>Your class should store:</p>
+<ul>
+    <li>The subject (e.g., "Math")</li>
+    <li>The number of pages (a whole number)</li>
+</ul>
+
+<p>Your class should have two constructors:</p>
+<ul>
+    <li>A default constructor that sets the subject to "General" and pages to 100</li>
+    <li>A parameterized constructor that accepts a subject and number of pages</li>
+</ul>
+
+<p>Your class should be able to:</p>
+<ul>
+    <li>Display the subject and number of pages</li>
+</ul>
+
+<p>In your main function:</p>
+<ul>
+    <li>Create one Notebook object using the default constructor</li>
+    <li>Create another using the parameterized constructor with values of your choosing</li>
+    <li>Display the information for both objects</li>
+</ul>
+
+<p>Our solution might look as follows:</p>
+
+<pre><code>
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Notebook {
+public:
+    string subject;
+    int pages;
+
+    // Default constructor (informally, this just means "no inputs")
+    Notebook() {
+        subject = "General";
+        pages = 100;
+    }
+
+    // Parameterized constructor (informally, this just means it has inputs)
+    Notebook(string s, int p) {
+        subject = s;
+        pages = p;
+    }
+
+    void displayInfo() {
+        cout &lt;&lt; "Subject: " &lt;&lt; subject &lt;&lt; endl;
+        cout &lt;&lt; "Pages: " &lt;&lt; pages &lt;&lt; endl;
+    }
+};
+
+int main() {
+    Notebook n1;
+    Notebook n2("Biology", 200);
+
+    n1.displayInfo();
+    cout &lt;&lt; endl;
+    n2.displayInfo();
+
+    return 0;
+}
+</code></pre>
+</body>
+</html>
