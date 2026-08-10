@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>BitwiseOps</title>
+</head>
+<body>
+    <h1>BitOps</h1>
+    <hr>
+    <h2>Class Notes</h2>
+    <ul>
+        <li>Word = group of bits > 8</li>
+        <ul>
+            <li>16, 32, 64</li>
+        </ul>
+        <li>'Mask' = binary string that gives us answers</li>
+    </ul>
+    <hr>
+    <h2>Bitwise Operators</h2>
+    <ul>
+        <li>CPUs only allow us to manipulate BYTES, not BITS</li>
+        <li>Cannot directly manipulate bits</li>
+        <li>Use bitwise to manipulate bits</li>
+    </ul>
+    <div class="note">
+        <b>Note:</b> 8 bits in a byte
+    </div>
+    
+    <hr>
+
+    <h2>Logical AND (&) Operator</h2>
+    <ul>
+        <li>Logical AND is a binary operator. Is signed agnostic.</li>
+        <li>Algorithm: line up bits. Where the column has two 1s, the result is 1. Otherwise, it is 0.</li>
+    </ul>
+    <pre>
+    0b0110_0110
+  & 0b0100_0100
+  _____________
+    0b0100_0100
+    </pre>
+    <hr>
+
+    <h2>Logical OR | Operator</h2>
+    <ul>
+        <li>Logical OR is a binary operator. Is signed agonistic.</li>
+        <li>Algorithm: line up bits. Where a column has at least a 1, the result is 1. Otherwise, it is 0.</li>
+    </ul>
+    <pre>
+    0b0110_0110
+  | 0b0100_0101
+  _____________
+    0b0110_0111
+    </pre>
+    <hr>
+
+    <h2>Logical NOT ~ Operator</h2>
+    <ul>
+        <li>Logical NOT is a unary operator. Is signed agnostic. Also called "one's complement"</li>
+        <li>Algorithm: flip all 0s to 1s and all 1s to 0s.</li>
+    </ul>
+    <pre>
+    ~0b0110_0110 = 0b1001_1001
+    </pre>
+    <hr>
+
+    <h2>Logical XOR ^ Operator</h2>
+    <ul>
+        <li>Logical XOR (exclusive OR) is a binary operator. Is signed agnostic.</li>
+        <li>Algorithm: line up bits. Where the column has exactly one 1, the result is 1. Otherwise, it is 0.</li>
+    </ul>
+    <pre>
+    0b0110_0110
+  ^ 0b0100_0101
+  _____________
+    0b0010_0011
+    </pre>
+    <hr>
+
+    <h2>Logical LSHIFT << Operator</h2>
+    <ul>
+        <li>Logical LSHIFT (left shift) is a binary operator. Is signed agnostic.</li>
+        <li>value << number_of_shifts</li>
+        <ul>
+            <li>bits that fall off the left are discarded</li>
+            <li>0s are added from the right</li>
+            <li>Mathematically: value * 2<sup>number_of_shifts</sup></li>
+        </ul>
+    </ul>
+    <pre>
+    0b0100_1001 << 2 = 0b0010_0100
+    </pre>
+
+    <h2>Logical RSHIFT >> Operator</h2>
+    <ul>
+        <li>Logical RSHIFT (right shift) is a binary operator. Is signed agnostic.</li>
+        <li>unsigned_value >> number of shifts</li>
+        <ul>
+            <li>Bits that fall off the right are discarded</li>
+            <li>0s are added from the left</li>
+            <li>Mathematically: unsigned_value/2<sub>number of shifts</sub></li>
+        </ul>
+    </ul>
+    <pre>
+    0b0100_1001 >> 2 = 0b0001_0010
+    </pre>
+
+    <h2>Arithmetic RSHIFT >> Operator</h2>
+    <ul>
+        <li>Difference between Arithmetic RSHIFT and logical RSHIFT: </li>
+        <ul>
+            <li>Logical shift fills with 0s, arithmetic shift copies the sign bit to keep the number positive or negative</li>
+        </ul>
+        <li>signed_value >> number of_shifts</li>
+        <ul>
+            <li>Bits that fall off the right are discarded</li>
+            <li>The sign bit is added to the left</li>
+        </ul>
+    </ul>
+    <pre>
+    0b1100_1001 >> 2 = 0b1111_0010
+    </pre>
+    <hr>
+
+    <h2>Clarification - Signed bit</h2>
+    <ul>
+        <li>In a signed binary number, the leftmost bit is called the signed bit</li>
+        <ul>
+            <li>0 --> Positive number</li>
+            <li>1 --> Negative number</li>
+        </ul>
+    </ul>
+    <hr>
+
+    <h2>XOR Invertibility</h2>
+    <ul>
+        <li>XOR is an inversion of itself. Used in cryptography for "stream ciphers."</li>
+        <li>Exclusive or, only returns true when bits are DIFFERENT</li>
+    </ul>
+    <pre>
+      0b0110_0011
+    ^ 0b0111_0110
+    _____________
+      0b0001_0101
+    ^ 0b0111_0110
+    _____________
+      0b0110_0011
+    </pre>
+    <hr>
+    <h2>Bit Shift Example</h2>
+    <pre><code>
+#include &lt;iostream&gt;
+#include &lt;cstdint&gt;
+#include &lt;bitset&gt;
+
+using namespace std;
+
+int main(void) {
+    uint8_t a = 8, b = 7;
+    cout << "a is " << (int) a << '\n';
+    cout << "b is " << (int) b << '\n';
+
+    cout << "a >> 1 is " << (a >> 1) << '\n';
+    cout << "b >> 1 is " << (b >> 1) << '\n';
+
+    cout << "a << 1 is " << (a << 1) << '\n';
+    cout << "b << 1 is " << ((b << 1)) << '\n';
+
+    bitset<8> c = 0b0000'0001;
+    c = c << 3;
+    cout << "c << 3: " << c << '\n';
+
+    return 0;
+}
+    </code></pre>
+    <b>Output: </b>
+    <pre><code>
+a is 8
+b is 7
+a >> 1 is 4
+b >> 1 is 3
+a << 1 is 16
+b << 1 is 14
+c << 3: 00001000
+    </code></pre>
+    
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Pointers</title>
+</head>
+<body>
+    <h1>Pointers</h1>
+    <hr>
+
+    <h2>What is a Pointer?</h2>
+    <ul>
+        <li>Pointers store a memory location</li>
+        <ul>
+            <li>"pointer" = these "point" to a memory location.</li>
+        </ul>
+        <li>All pointers have the same size:</li>
+        <ul>
+            <li>64-bit machine: up to 8-bytes (64-bits)</li>
+            <li>32-bit machine: up to 4-bytes (32-bits)</li>
+            <ul>
+                <li>Actual number of bits used for addresses depends on the size of RAM</li>
+            </ul>
+        </ul>
+    </ul>
+    <hr>
+
+    <h2>Why are pointers important?</h2>
+    <ul>
+        <li>Many languages do not have pointer variables</li>
+        <ul>
+            <li>Java, Python, C# (limited support in unsafe mode)</li>
+            <li>Reliance on an automated system called garbage collection</li>
+            <li>Programmer has limited control over memory management</li>
+        </ul>
+        <li>C and C++ give full control over memory management to the programmer</li>
+        <ul>
+            <li>Advantage: much more efficient, faster programs</li>
+            <li>Disadvantage: increased likelihood of errors</li>
+            <ul>
+                <li>Memory leaks</li>
+                <li>Buffer overflow susceptible code(?)</li>
+            </ul>
+        </ul>
+    </ul>
+    <hr>
+
+    <h2>Pointer Syntax</h2>
+    <ul>
+        <li>Declaration: type* name;</li>
+        <ul>
+            <li>type: the data type of the value stored at the memory location</li>
+            <li>*: indicates that this variable is a pointer</li>
+            <li>name: the name of the pointer variable</li>
+        </ul>
+        <li>Example: int* ptr;</li>
+    </ul>
+    <hr>
+    
+    <h2>Address-of Syntax</h2>
+    <ul>
+        <li>To get the memory address of a variable, we use the address-of operator (&)</li>
+        <li>Example: int x = 5; int* ptr = &x;</li>
+    </ul>
+    <pre><code>
+int k = 22;
+cout << k; // prints 22 (value of integer k)
+cout << &k; // prints memory address of k
+    </code></pre>
+    <hr>
+
+    <h2>Using Pointers</h2>
+    <p>We use the * in 2 ways: to declare pointers, and dereference</p>
+    <pre><code>
+int k;
+int *ptr_k; // When declaring: Asterisk makes a pointer
+
+ptr_k = &k; // Puts memory address of k into pointer ptr_k
+
+*ptr_k = 771; // Using the * when getting/setting is dereference operator. This puts the value 771 into 
+              // the variable located by ptr_k.
+
+printf("%d\n", k); // prints 771
+    </code></pre>
+    <hr>
+
+    <h2>Allocating New Memory (C)</h2>
+    <p>Malloc() allocates memory (some number of bytes). Sizeof() just tells malloc() how many bytes to allocate.</p>
+    <pre><code>
+int *ptr; // declaring a pointer
+
+ptr = (int*)malloc(sizeof(int)); // creates a new "nameless" integer in memory that we can only access via pointer.
+
+*ptr = 60; // deference pointer to give that new integer a value.
+
+printf("%d\n", *ptr); // prints 60
+    </code></pre>
+    <hr>
+
+    <h2>Malloc vs Calloc</h2>
+    <p>malloc() and calloc() are slightly different ways to allocate memory in C</p>
+    <ul>
+        <li>malloc() ("memory allocation")</li>
+        <ul>
+            <li>Allocates one block of memory</li>
+            <li>Memory is uninitialized (contains garbage values)</li>
+            <li>Faster</li>
+            <li>You must manually compute total size.</li>
+        </ul>
+        <li>calloc() ("contiguous allocation")</li>
+        <ul>
+            <li>ptr = (cast-type*)calloc(n, elment-size)</li>
+            <li>(ex.) ptr = (int*) calloc(5, sizeof(int));</li>
+            <li>Allocates memory for an array of elements (contiguous blocks)</li>
+            <li>Memory is initialized to zero</li>
+            <li>Slower</li>
+            <li>You can specify the number of elements and their size.</li>
+        </ul>
+    </ul>
+    <hr>
+
+    <h2>Realloc</h2>
+    <ul>
+        <li>realloc() ("re-allocate")</li>
+        <ul>
+            <li>allows to dynamically expand the size of previously allocated memory</li>
+            <li>Previously-stored values will be preserved</li>
+            <li>Syntax: </li>
+        </ul>
+        <pre><code>
+            ptr = realloc(ptr, newSize);
+        </code></pre>
+    </ul>
+    <hr>
+
+    <h2>Free</h2>
+    <ul>
+        <li>free() is needed to avoid memory leaks</li>
+        <li>If you're done using allocated memory, you should free it.</li>
+        <ul>
+            <li>not as simple as it sounds</li>
+        </ul>
+        <li>Syntax: free(ptr);</li>
+    </ul>
+    <hr>
+
+    <h2>Allocating New Memory (C++)</h2>
+    <p>The <b>new</b> keyword creates a new dynamic variable of a specified type and returns a pointer that points to this new variable.</p>
+    <pre><code>
+int *ptr; // declaring a pointer
+
+ptr = new int; // create a new "nameless" integer in memory that we can only acccess via pointer
+
+*ptr = 60; // deference ptr to give that new integer a value
+    </code></pre>
+
+    <div class="note" style="text-align: center;">
+
+        <table style="text-align: center; display: inline-block;">
+            <thead>
+                <tr>
+                    <th colspan="2">malloc() vs. new</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <th>malloc()</th>
+                    <th>new</th>
+                </tr>
+                <tr>
+                    <td>
+                        <ul>
+                            <li>C function</li>
+                            <li>memory is not initialized</li>
+                            <li>returns void* (needs casting)</li>
+                            <li>you manually use sizeof</li>
+                            <li>use free() to deallocate</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>C++ operator</li>
+                            <li>memory is initialized</li>
+                            <li>returns correct type automatically</li>
+                            <li>size is handled automatically</li>
+                            <li>use delete/delete[] to deallocate</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+            
+        </table>
+    </div>
+
+    <hr>
+
+    <h2>Allocating New Memory: Objects</h2>
+    <p>This is using new with a class (the only difference is we are using the class constructor with the new call, like Java)</p>
+    <pre><code>
+Dog *pup; // declaring a pointer to a Dog type
+pup = new Dog(); // Creates a new "nameless" Dog in memory using the constructor that we can only access via pointer
+(*pup).age = 10; // Dereference ptr to give access to the object, the use dot operator to access a public field or method.
+    </code></pre>
+    <hr>
+
+    <h2>Allocating New Memory: Arrays</h2>
+    <p>This is using new[] with an array - just like the normal new call, only we allocate the size of data type of the array * the number of elements given by the new call.</p>
+    <pre><code>
+int *ptr_arr; // declaring an integer pointer
+
+ptr_arr = new int[5]; // creates 4 new contiguous integers in memory and returns a pointer to the first one. Allocated sizeof(int)*5 = 4 bytes * 5 = 20 bytes.
+
+ptr_arr[2] = 10; // [] automatically dereferences the pointer for us. We can use the int pointer just like an array.
+
+*(ptr_arr + 2) = 10; // this is the equivalent to the statement above. 
+    </code></pre>
+    <hr>
+
+    <div class="note">
+        <p>In computer science, <b>contiguous</b> means memory locations are stored <b>next to each other in a continuous block without gaps</b>.</p>
+    </div>
+
+    <h2>De-allocating New Memory</h2>
+    <p>The <b>delete</b> keyword destroys a dynamic vairable of a specified type and returns that memory to the freestore to be used by other parts of the program if needed.</p>
+    <pre><code>
+*ptr = 70; // Same pointer from the previous slide
+
+delete ptr; // destroys the "nameless" variable that held 70.
+
+*ptr = 60; // this is undefined behavior because we are trying to access memory that has been deallocated.
+           // to re-use ptr again, we would need to make another new call. We are trying to reference a non-NUNLL pointer that is in free memory.
+        
+ptr = NULL; // this gives us a seg fault now if we try to access ptr - which helps us find our bugs.
+    </code></pre>
+    <ul>
+        <li>The delete keyword also destroys objects. All of the consequences after "delete" call are the same as above.</li>
+        <li>When using delete[] with an array - just like the normal delete call, only we make sure we destroy all the elements in the array.</li>
+        <pre><code>
+    int *ptr_arr; // declaring an integer pointer
+
+    ptr_arr = new int[4]; // creates 4 new contiguous integers in memory and returns a pointer to the first one.
+
+    ptr_arr[2] = 10; // [] automatically dereferences the pointer for us. We can use the int pointer just like an array.
+    *(ptr_arr + 2) = 10; // this is the equivalent to the statement above.
+        </code></pre>
+    </ul>
+
+    <hr>
+
+    <h2>Pointer Arithmetic</h2>
+    <ul>
+        <li>We can use the subscript operator (brackets[]) to treat a pointer like an array</li>
+        <li>Adding and subtracting from a pointer walks us to the next data type (of the pointer) in contiguous memory.</li>
+        <ul>
+            <li>It does NOT increase/decrease by a single byte, unless datatyle is a char (chars are 1 byte)</li>
+        </ul>
+        <li>This is analogous to moving the next element in the array.</li>
+    </ul>
+
+    <pre><code>
+int *a = (int*)0x64; // 100 in hex
+cout << (a + 10);
+    </code></pre>
+
+    <ul>
+        <li>When adding to a pointer: </li>
+        <ul>
+            <li>Formula: result = current + offset * data_size</li>
+            <li>Example:</li>
+            <ul>
+                <li>Current = 100, offset = 10, data_size = 4</li>
+                <li>result = 100 + 10 * 4 = 140 = 0x8C</li>
+            </ul>
+        </ul>
+    </ul>
+
+    <div class="text-and-image">
+        <div class="text">
+            <pre><code>
+int array[] = {1, 2, 3, 4, 5};
+int *ptr_a = array + 1;
+cout << *(ptr_a+1); // prints 3
+            </code></pre>
+            <ul>
+                <li><b>array</b> is pointer to the first element (&array[0])</li>
+                <li><b>array + 1</b> means: move 1 position forward</li>
+                <li><b>ptr_a</b> is pointing to array[1]. Adding 1 to it moves it to the next element.</li>
+                <li><b>*(ptr_a + 1)</b> dereferences the pointer to access the value at that location.</li>
+                <li>*(ptr_a + 1) &rarr; value at array[2] &rarr; 3</li>
+            </ul>
+        </div>
+        <div class="image-in-div">
+            <img src="Pointers/img.png" alt="pointer arithmetic diagram">
+        </div>
+    </div>
+    <hr>
+
+    <h2>Subscript on a Pointer</h2>
+    <pre><code>
+int *k = (int*) 100;
+k[10] = 30; // this is the same as *(k + 10) = 30;
+    </code></pre>
+    <p>Subscript automatically dereferences. k[10] is <b>equivalent</b> to *(k+10)</p>
+
+    <hr>
+
+    <h2>Pointers with Classes</h2>
+    <p>Pointers can point to any data type in memory. String is a class that's defined in #include &lt;string&gt;.</p>
+    <pre><code>
+string somestring = "Hello";
+string *ptrstring = &somestring; // this pointer points to the address of somestring.
+
+cout << ptrstring; // prints address
+cout << *ptrstring; // prints value
+
+    </code></pre>
+    <hr>
+
+    <h2>Class Members w/ Dot Operator</h2>
+    <p>You must dereference the pointer to access class members.</p>
+    <pre><code>
+cout << (*ptrstring).length(); 
+    </code></pre>
+    <hr>
+
+    <h2>Arrow Operator -- Easier!</h2>
+    <p>You can use the arrow operator (->) instead of the dot operator to save time. It will dereference the pointer for you, and it is cleaner syntax.</p>
+    <pre><code>
+cout << mystring->length(); // this is the same as (*mystring).length();
+    </code></pre>
+    <hr>
+
+    <h2>Pointer Parameters</h2>
+    <div class="text-and-text">
+        <img src="Pointers/img3.png" alt="pointer parameters diagram" class="image-in-div">
+        <img src="Pointers/img4.png" alt="pointer parameters diagram 2" class="image-in-div">
+    </div>
+    <ul>
+        <li>Pointers are passed by value (just like regular variables).</li>
+        <ul>
+            <li>That means the function gets a copy of the pointer, not the original.</li>
+        </ul>
+    </ul>
+
+    <ol>
+        <li>In main(): j stores the address of 0x200. So j &rarr; 0x200</li>
+        <li>func(j); : The value of j is passed into func. Inside func, a new pointer i is created.</li>
+        <ul>
+            <li>j (in main) &rarr; 0x200</li>
+            <li>i (infunc) &rarr; 0x200 // copy of j </li>
+        </ul>
+        <li>Inside func, i = (int *)0x100; only changes the local copy. It does NOT affect j in main.</li>
+        <li>When the function ends, i is destroyed (it was local). And j is still 0x200</li>
+        <li>so it prints 0x200</li>
+    </ol>
+    
+    <hr>
+    
+    <h2>Pointer Constant</h2>
+    <div class="text-and-image">
+        <div class="text">
+            <ul>
+                <li>const before the *</li>
+                <ul>
+                    <li>const int *p;</li>
+                    <li>Makes the VALUE at the memory address being pointed to constant</li>
+                </ul>
+                <li>const after the *</li>
+                <ul>
+                    <li>int * const p;</li>
+                    <li>Makes the MEMORY ADDRESS being pointed to read-only (cannot update the memory address)</li>
+                </ul>
+                <li>const before and after the *</li>
+                <ul>
+                    <li>const int * const p;</li>
+                    <li>Makes the MEMORY ADDRESS pointed to the contant and the VALUE at the memory address being pointed to constant.</li>
+                </ul>
+            </ul>
+        </div>
+        <div class="image">
+            <img src="Pointers/img2.png" alt="pointer constant diagram" class="image-in-div">
+        </div>
+    </div>
+
+</body>
+</html>

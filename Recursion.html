@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Recursion</title>
+</head>
+<body>
+    <h1>Recursion</h1>
+    <hr>
+
+    <h2>What is Recursion?</h2>
+    <p><b>Formal definition:</b> A method where the solution to a problem depends on the solutions to smaller instances of the same problem.</p>
+    <p><b>Informal definition:</b> A function calling itself repeatedly while changing the input in order to reach some kind of stopping point/goal.</p>
+    <hr>
+
+    <h2>Iterative equivalence</h2>
+    <p>Theoretical computer science includes a proof that recursive functions and iterative solutions are equivalent</p>
+    <p>Loops are usually more efficient than recursion.</p>
+    <ul>
+        <li>Function calls are expensive in terms of system resource use (processor cycles and memory)</li>
+    </ul>
+    <p>Compilers usually convert recursive code into "loop form"</p>
+    <hr>
+
+    <h2>Why recursion?</h2>
+    <p>Recursive functions are often the best and easiest way for humans to solve a problem (at least initially)</p>
+    <p>Often the algorithm development process consist of two stages:</p>
+    <ol>
+        <li>Develop a recurive version</li>
+        <li>Convert recursive to iterative</li>
+    </ol>
+    <hr>
+
+    <h2>Three components of recursion</h2>
+    <ul>
+        <li>Base Case</li>
+        <ul>
+            <li>Stopping point or goal</li>
+        </ul>
+        <li>Work toward soluton</li>
+        <li>Recursive calls</li>
+    </ul>
+    <hr>
+
+    <h2>Example</h2>
+    <pre><code>
+int factorial(int n) {
+    if (n > 1) {
+        return n * factorial(n-1);
+    } else {
+        return 1;
+    }
+}
+    </code></pre>
+</body>
+</html>

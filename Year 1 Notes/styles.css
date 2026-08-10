@@ -43,11 +43,6 @@ code {
     background-color:rgb(79, 81, 109);
 }
 
-.link-nav {
-
-}
-
-
 .limited_table {
     table-layout: fixed;
     width: 100%;
@@ -104,9 +99,17 @@ code {
 
 }
 
-.link-container {
+.links-container {
     display: flex;
     justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.note {
+    background-color: rgb(172, 176, 179);
+    border-radius: 10px;
+    padding: 20px;
 }
 
 .link-in-container {
@@ -124,3 +127,4 @@ code {
     height: 200px;
     width: 200px;
 }
+
