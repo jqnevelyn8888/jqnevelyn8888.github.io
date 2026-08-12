@@ -7,54 +7,146 @@
 }
 
 html {
-    background-color: rgb(202, 215, 226);
+    background-color: rgb(202, 206, 226);
     font-family: Candara;
     color: rgb(52, 57, 59);
+    font-size: 18px;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: right;
+    align-items: center;
+
+    padding: 20px;
+
+}
+
+hr {
+    border: none;
+    border-top: solid 1px rgb(52, 57, 59);
 }
 
 a {
     text-decoration: none;
 }
 
-/* nav */
+/* classes */
+
+.no-hover {
+    display: inline flex;
+    gap: 20px;
+}
+
+/* ---------- fun ---------- */
+
+#petting {
+    display: flex;
+    flex-direction: row-reverse;
+    position: relative;
+    justify-content: right;
+}
+
+#petting-hearts {
+    background-color: red;
+    position: relative;
+    display: flex;
+    width: 100%;
+
+}
+
+.companion {
+    bottom: 0;
+    right: 20vw;
+
+    display: none;
+    justify-content: center;
+    text-align: center;
+
+    padding: 10px;
+    width: 50%;
+    height: auto;
+    min-width: 200px;
+    max-width: 400px;
+}
+
+.heart {
+    display: block;
+    position: absolute;
+    width: 60px;
+    height: 60px;
+
+    right: 20vw;
+    bottom: auto;
+
+    animation: floatUp 1s linear;
+}
+
+
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translate(0px, 0px)
+        
+    }
+
+    100% {
+        transform: translate(0px, -300px);
+        opacity: 0;
+    }
+}
+/* ---------- nav ---------- */
 
 .navigation {
-    background-color: rgb(74, 85, 94);
+    display: flex;
+    background-color: rgb(80, 84, 100);
     border-radius: 5px;
     color: white;
     font-size: 20px;
-
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
 }
 
 .navigation ul {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+
     list-style-type: none;
-    margin: 10px;
+    margin: 0;
     padding: 10px;
     width: 100%;
 
-    display: flex;
-    flex-flow: row;
-    justify-content: space-around;
+
 }
 
 .navigation ul li {
-    flex: 1;
-    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     color: white;
+
 }
 
 .navigation ul li a {
-    text-decoration: none;
-    padding: 10px;
-    margin: 10px;
     border-radius: 5px;
+
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+    width: 70%;
+
 }
 
-.navigation ul li a:hover {
-    background-color: rgb(47, 59, 68);
+.navigation ul li a:not(.no-hover):hover {
+    background-color: rgba(52, 56, 69, 0.5);
     transition: .5s;
 }
 
@@ -71,8 +163,8 @@ a {
 
 .switch {
     position: relative;
-    display: inline-block;
-    width:60px;
+    display: inline-flex;
+    width: 60px;
     height: 34px;
 }
 
@@ -107,15 +199,16 @@ a {
     border-radius: 30px;
 }
 
-.input:focus + .slider {
+.input:focus+.slider {
     box-shadow: 0 0 1px pink;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
     transform: translateX(26px);
 }
 
 /* pretty toggle styles */
+
 .pretty-mode {
     color: rgb(91, 116, 149);
     font-family: 'Cause', sans-serif;
@@ -124,23 +217,31 @@ input:checked + .slider:before {
 
 html.pretty-mode {
     min-height: 100vh;
-    background: repeating-linear-gradient(
-        45deg,
-        rgb(214, 241, 255),
-        rgb(214, 241, 255) 30px,
-        white 30px,
-        white 60px
-    );
+    background: repeating-linear-gradient(45deg,
+            rgb(214, 232, 255),
+            rgb(214, 232, 255) 30px,
+            white 30px,
+            white 60px);
     background-attachment: fixed;
 }
 
+hr.pretty-mode {
+    border-top: dotted rgb(91, 116, 149) 4px;
+    ;
+}
+
+.pretty-mode.companion {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .pretty-mode nav {
-    background-color:rgb(135, 162, 202);
+    background-color: rgb(169, 194, 231);
     border-color: white;
     border-style: solid;
     border-width: 8px;
-
 }
 
-
-    
+#nav-no-hover .pretty-mode {
+    color: white;
+}
