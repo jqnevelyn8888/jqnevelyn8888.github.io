@@ -1,14 +1,28 @@
-html {
-    font-family: Candara;
+@import url('https://fonts.googleapis.com/css2?family=Cause&display=swap');
+
+/* Main tags */
+
+* {
+    transition: color 0.4s ease, font-family 0.4s ease, background-color 0.4s ease;
 }
 
-body {
+html {
     background-color: rgb(202, 215, 226);
+    font-family: Candara;
+    color: rgb(52, 57, 59);
 }
+
+a {
+    text-decoration: none;
+}
+
+/* nav */
 
 .navigation {
     background-color: rgb(74, 85, 94);
+    border-radius: 5px;
     color: white;
+    font-size: 20px;
 
     display: flex;
     flex-flow: row;
@@ -29,11 +43,11 @@ body {
 .navigation ul li {
     flex: 1;
     text-align: center;
+    color: white;
 }
 
 .navigation ul li a {
     text-decoration: none;
-    color: white;
     padding: 10px;
     margin: 10px;
     border-radius: 5px;
@@ -47,3 +61,86 @@ body {
 .navigation ul li a:visited {
     color: white;
 }
+
+/* semester note pages links */
+.sem-link {
+    display: block;
+}
+
+/* pretty toggle */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width:60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    height: 26px;
+    width: 26px;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: white;
+    transition: .4s;
+    border-radius: 30px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: rgb(74, 85, 94);
+    transition: .4s;
+    border-radius: 30px;
+}
+
+.input:focus + .slider {
+    box-shadow: 0 0 1px pink;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* pretty toggle styles */
+.pretty-mode {
+    color: rgb(91, 116, 149);
+    font-family: 'Cause', sans-serif;
+    font-weight: 680;
+}
+
+html.pretty-mode {
+    min-height: 100vh;
+    background: repeating-linear-gradient(
+        45deg,
+        rgb(214, 241, 255),
+        rgb(214, 241, 255) 30px,
+        white 30px,
+        white 60px
+    );
+    background-attachment: fixed;
+}
+
+.pretty-mode nav {
+    background-color:rgb(135, 162, 202);
+    border-color: white;
+    border-style: solid;
+    border-width: 8px;
+
+}
+
+
+    
