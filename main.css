@@ -1,0 +1,49 @@
+html {
+    font-family: Candara;
+}
+
+body {
+    background-color: rgb(202, 215, 226);
+}
+
+.navigation {
+    background-color: rgb(74, 85, 94);
+    color: white;
+
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
+
+.navigation ul {
+    list-style-type: none;
+    margin: 10px;
+    padding: 10px;
+    width: 100%;
+
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+}
+
+.navigation ul li {
+    flex: 1;
+    text-align: center;
+}
+
+.navigation ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.navigation ul li a:hover {
+    background-color: rgb(47, 59, 68);
+    transition: .5s;
+}
+
+.navigation ul li a:visited {
+    color: white;
+}
