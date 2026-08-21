@@ -1,0 +1,68 @@
+table {
+    border: solid 1px rgb(52, 57, 59);
+    border-collapse: collapse;
+}
+
+th, td {
+    border: solid 1px rgb(52, 57, 59);
+    padding: 10px;
+}
+
+/* table of contents */
+.table-of-contents {
+    padding: 20px;
+    background-color: rgba(77, 80, 92, 0.5);
+    border-radius: 30px;
+}
+
+.table-of-contents a {
+    color: white;
+}
+
+.table-of-contents ol {
+    color: white;
+}
+
+/* notes */
+div.notes {
+    padding: 20px 40px;
+    border-radius: 30px;
+}
+
+img.notes-img {
+    padding: 20px;
+    width: 100%;
+}
+
+/* pretty mode */
+.pretty-mode.table-of-contents {
+    background-color: rgba(131, 164, 196, 0.6);
+    color: white;
+}
+
+.pretty-mode.table-of-contents ol > li,
+.pretty-mode.table-of-contents ul > li 
+{
+    color: white;
+}
+
+.pretty-mode table {
+    border: dotted 1px rgb(91, 116, 149);
+    background-color: white;
+}
+
+.pretty-mode th {
+    border: dotted 4px rgb(91, 116, 149);
+    background-color: rgb(214, 232, 255);
+    padding: 10px;
+}
+
+.pretty-mode td {
+    border: dotted 4px rgb(91, 116, 149);
+    padding: 10px;
+}
+
+div.notes.pretty-mode {
+    /* background-color: rgba(194, 218, 248, 0.5); */
+    background-color: rgba(255, 255, 255, 1);
+}

@@ -19,7 +19,7 @@ prettyToggle.addEventListener('change', (e) => {
 
 function createHeart() {
     let heart = document.createElement('img');
-    heart.setAttribute('src', 'imgs/blue-heart.png');
+    heart.setAttribute('src', 'imgs/heart.png');
     heart.classList.add('heart');
     return heart;
 }
