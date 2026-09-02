@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="y2s1.css">
+    <link rel="icon" type="image/x-icon" href="../imgs/favicon.ico?v=2">
+    <link href="https://googleapis.com" rel="stylesheet">
+
+    <script src="../main.js" defer></script>
+
+    <title>Computer Organization - Module 1</title>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navigation">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../stats.html">Stats</a></li>
+                <li>
+                    <a href="#" class="no-hover" id="nav-no-hover">
+                        <span>Pretty mode: </span>
+                        <label class="switch">
+                            <input type="checkbox" id="pretty-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </a>
+                </li>
+
+
+            </ul>
+        </nav>
+
+    </header>
+
+    <main>
+        <h1>Module 2</h1>
+        <div class="table-of-contents">
+            <ol>
+                <li><a href="#reading-notes">Reading Notes</li>
+                <ul>
+                    <li><a href="#module2Reading1">1's and 2's complement of a Binary Number</a></li>
+                    <li><a href="#module2Reading2">Overflow </a><span><b>** has quiz</b></span></li>
+                    <li><a href="#module2Reading3">Boolean Algebra </a><span><b>** has quiz</b></span></li>
+                    <li><a href="#module2Reading4">Sum of Products Form </a><span><b>** has quiz</b></span></li>
+                </ul>
+                <li><a href="#class-notes">Class Notes</a></li>
+                <ul>
+                    <li><a href="#2.1">Introduction</a></li>
+                    <li><a href="#2.2">Positional Numbering System</a></li>
+                    <li><a href="#signed-integer-representation">Signed Integer Representation</a></li>
+                    <li><a href="#signed-magnitude-disadvantages">Signed Magnitude Disadvantage</a></li>
+                    <li><a href="#ones-complement">One's Complement</a></li>
+                    <li><a href="#two-complement">Two's Complement</a></li>
+                    <li><a href="#to-note">Note</a></li>
+                    <li><a href="#overflow">Overflow</a></li>
+                    <li><a href="#unsigned-usage">Unsigned Usage</a></li>
+                    <li><a href="#mult-div">Multiplication and Division</a></li>
+                    
+                </ul>
+            </ol>
+        </div>
+
+        <hr>
+
+        <div id="reading-notes">
+            <h2>Reading Notes</h2>
+
+            <h3 id="module2Reading1">1) <a href="https://www.geeksforgeeks.org/dsa/1s-2s-complement-binary-number/" target="_blank">1's and 2's complement of a Binary Number</a></h3>
+            <div class="notes">
+                <p><b>1's complement:</b> obtained by flipping every (0 -> 1 and 1-> 0)</p>
+                <ul>
+                    <li>Traverse the binary string and flip every bit: replace 0 with 1, 1 with 0 </li>
+                </ul>
+                <p><b>2's complement:</b> obtained by adding 1 to the 1's complement</p>
+                <ul>
+                    <li>Compute the 1's complement</li>
+                    <li>Starting from the least significant bit (LSB), add 1</li>
+                    <li>Propagate the carry until it becomes 0</li>
+                    <li>If no 0 is found while adding 1, insert 1 at the beginning of the result.</li>
+                </ul>
+
+                <p>Example (1): </p>
+                <ul>
+                    <li>Input: s = "0111"</li>
+                    <li>1's Complement = 1000 (8)</li>
+                    <li>2's Complement = 1001 (9)</li>
+                </ul>
+                <p>Example (2): </p>
+                <ul>
+                    <li>Input: s = "1100"</li>
+                    <li>1's Complement = 0011 (3)</li>
+                    <li>2's Complement = 0100 (4)</li>
+                </ul>
+
+                <h4>Algorithm</h4>
+                <ol>
+                    <li>Traverse the binary string and flip every bit to obtain the 1's complement</li>
+                    <li>Copy the 1's complement</li>
+                    <li>Traverse from right to left to add 1</li>
+                    <li>If no 0 is found while adding, prepend 1</li>
+                    <li>Return both complements</li>
+                </ol>
+
+                <p>Time complexity: O(n); Auxillary Space: O(n)</p>
+            </div>
+
+            <h3 id="module2Reading2">2) <a href="https://www.geeksforgeeks.org/computer-organization-architecture/overflow-in-arithmetic-addition-in-binary-number-system/" target="_blank">Overflow</a></h3>
+            <div class="notes">
+                <p>An overflow happens when the result of an addition operation exceeds the capacity of the fixed bit allocation, resulting in an inaccurate value and possible sign errors in signed arithmetic</p>
+                <ul>
+                    <li>Limited memory, excess bits, erroneous result</li>
+                </ul>
+                <h4>Conditions of Overflow</h4>
+                <ol>
+                    <li>Addition of two positives</li>
+                    <ul>
+                        <li>when adding two + and the result is more than max amount that an N-bit system can hold &rightarrow; overflow takes place</li>
+                    </ul>
+                    <li>Addition of two negatives</li>
+                    <ul>
+                        <li>two  negatives are added result less than minimum value that can be represented</li>
+                    </ul>
+                    <li>Variety of carry in and carry out bits</li>
+                    <ul>
+                        <li>is carry in and carry out of the MSB are different, you have overflow.</li>
+                    </ul>
+                </ol>
+                <b>If we add two operands of the same sign and get result of opposite sign, overflow occurs.</b>
+            </div>
+            <h3 id="module2Reading3">3) <a href="https://www.geeksforgeeks.org/digital-logic/boolean-algebra/" target="_blank">Boolean Algebra</a></h3>
+            <div class="notes">
+                <h4>Logical Operations</h4>
+                <ol>
+                    <li>Negation / NOT operation</li>
+                    <ul>
+                        <li>Symbol: ' (or) ⇁</li>
+                        <li>Precedence: First</li>
+                    </ul>
+                    <li>Conjunction / AND operation</li>
+                    <ul>
+                        <li>Symbol: . (or) ∧</li>
+                        <li>Precedence: Second</li>
+                    </ul>
+                    <li>Disjunction / OR Operation</li>
+                    <ul>
+                        <li>Symbol: + (or) ∨</li>
+                        <li>Precedence: Third</li>
+                    </ul>
+                </ol>
+
+                <h4>Boolean Expressions and Variables</h4>
+                <p>Boolean expressions produces a boolean value when evaluated</p>
+
+                <h4>Truth Tables</h4>
+                <p>Represents all the combinations of input values and outputs in a tabular manner. All the possibilities of the input and output are shown in it.</p>
+
+                <p><b>Dual</b> &rightarrow; swap ANDs and ORs</p>
+            </div>
+
+            <h3 id="module2Reading4">4) <a href="https://www.geeksforgeeks.org/digital-logic/what-is-sum-of-product-sop-form/" target="_blank">Sum of Products Form</a></h3>
+            <div class="notes">
+                <h4>Type of SOP Forms</h4>
+                <ul>
+                    <li>Non-canonical SOP Form</li>
+                    <ul>
+                        <li>One or more product terms may not contain all variables of the Boolean function</li>
+                        <li>(ex.) F(A, B, C) = A + B.C + A.C</li>
+                        <ul>
+                            <li>Term A does not contain B and C</li>
+                            <li>The product term B.C does not contain the variable A</li>
+                            <li>The term A.C doesn't contain B</li>
+                        </ul>
+                    </ul>
+
+                    <li>Canonical SOP Form</li>
+                    <ul>
+                        <li>Every product term contains all the variables of the Boolean function</li>
+                        <li>(ex.) F(A,B) = A'B + AB'</li>
+                        <ul>
+                            <li>Term A'B contains both A and B</li>
+                            <li>Same for term A.B'</li>
+                        </ul>
+                    </ul>
+                </ul>
+
+                <h4>SOP Expressions Advantages and Disadvantages</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Advantages</th>
+                            <th>Disadvantages</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li>Easy to derive</li>
+                                    <li>Simple implementation</li>
+                                    <li>Uniform representation</li>
+                                    <li>Suitable for digital design</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Larger circuits</li>
+                                    <li>Not suitable for large functions</li>
+                                    <li>May not be fully optimized</li>
+                                    <li>higher hardware cost</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>MISC</h4>
+                <ul>
+                    <li>On truth table...</li>
+                    <li><b>Sum of minterms (Σm)</b> → list all the indices where F = 1</li>
+                    <li><b>Product of maxterms (ΠM)</b> → list all the indices where F = 0</li>
+                    <li>Minterms and maxterms always complement each other</li>
+                    <li><b>Σm → canonical SOP</b></li>
+                    <ol>
+                        <li>Figure out how many (n) variables there are. (Variables inside F())</li>
+                        <li>Convert each minterm index into binary padded to n bits</li>
+                        <li>For each bit in that binary number turn it into a literal in accordance to the letters in F()</li>
+                        <li>AND those literals together to form one product term per minterm</li>
+                        <li>OR all products terms together to form canonical SOP</li>
+                    </ol>
+                    <li><b>maxterms (ΠM → canonical POS)</b></li>
+                    <ul>
+                        <li>Same way as above but flipped.</li>
+                        <li>Bit = 0 &rightarrow; variable as is</li>
+                        <li>bit = 1 &rightarrow; variable complemented</li>
+                        <li>OR the literals within each term and AND the terms together</li>
+                    </ul>
+                </ul>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div id="class-notes">
+            <h2>Class Notes</h2>
+
+            <h3 id="2.1">Introduction</h3>
+            <div class="notes">
+                <ul>
+                    <li>A bit is the most basic unit of information in a computer</li>
+                    <li>Byte is group of 8 bits.</li>
+                    <ul>
+                        <li>A byte is the smallest possible addressable unit of computer storage</li>
+                        <li>Means that a particular byte can be retrieved according to its location in memory.</li>
+                    </ul>
+                    <li>A word is a contiguous group of bits.</li>
+                    <ul>
+                        <li>Words can be any number of bits/bytes</li>
+                        <li>Word sizes 16, 32, or 64 bits are most common</li>
+                        <li>In a word-addressable system, a word is the smallest addressable unit of storage</li>
+                    </ul>
+                </ul>
+            </div>
+
+            <h3 id="2.2">Positional Numbering Systems</h3>
+            <div class="notes">
+                <p>Binary systems store numbers using the position of each bit to represent a power of 2</p>
+            </div>
+
+            <h3 id="signed-integer-representation">Signed Integer Representation</h3>
+            <div class="notes">
+                <ul>
+                    <li>So far we've been only talking about unsigned numbers.</li>
+                    <ul>
+                        <li>unsigned numbers are numbers that can only be positive or zero. They don't have a negative sign.</li>
+                    </ul>
+                    <li>To represent signed integers, computer systems allocate the high-order bit to indicate the sign of a number</li>
+                    <ul>
+                        <li>The high order bit is the leftmost bit. It is also called the most significant bit.</li>
+                        <li>0 --> positive num; 1 --> negative num</li>
+                    </ul>
+                    <li>The remaining bits can contain the value of the number (but this can be interpreted different ways)</li>
+                    <li>There are 3 ways in which signed binary integers may be expressed: </li>
+                    <ol>
+                        <li>Signed magnitude</li>
+                        <li>One's complement</li>
+                        <li>Two's complement</li>
+                    </ol>
+                    <li>In an 8-bit word, signed magnitude representation places the absolute of the number in the 7 bits to the right of the sign bit.</li>
+                    <ul>
+                        <li>(ex.) 8-bit signed magnitude representation</li>
+                        <ul>
+                            <li>+3 is 00000011</li>
+                            <li>-3 is 10000011</li>
+                        </ul>
+                        <li>Computers perform arithmetic operations on signed magnitude numbers in much the same way as humans carry out pencil and paper arithmetic</li>
+                    </ul>
+                    <li><b>Binary addition rules:</b> </li>
+                    <ul>
+                        <li>0 + 0 = 0</li>
+                        <li>1 + 0 = 1</li>
+                        <li>0 + 1 = 1</li>
+                        <li>1 + 1 = 10</li>
+                    </ul>
+                    <li>The simplicity of this system makes it possible for digital circuits to carry out arithmetic operations</li>
+                    <li>The signs in signed magnitude representation work just like the signs in pencil and paper arithmetic.</li>
+                    <ul>
+                        <li>(ex.) Using signed magnitude binary arthmetic find the sum of -46 and -25</li>
+                        <li>Because the signs are the same, all we do is add the numbers and supply the negative sign when we are done.</li>
+                    </ul>
+                    <li><b>Mixed sign addition (or subtraction)</b> is done the same way</li>
+                    <ul>
+                        <li>1 - 1 = 0</li>
+                        <li>0 - 0 = 0</li>
+                        <li>1 - 0 = 1</li>
+                        <li>0 - 1 = borrow (10 - 01 = 01)</li>
+                    </ul>
+                    <li>The sign of the result gets the sign of the number that is larger</li>
+                </ul>
+            </div>
+
+            <h3 id="signed-magnitude-disadvantages">Signed Magnitude Disadvantages</h3>
+            <div class="notes">
+                <ul>
+                    <li>Signed magnitude representation is easy fo people for understand, but it requires complicated computer hardware</li>
+                    <ul>
+                        <li>Addition and subtraction have different logic, need to be separate modules</li>
+                    </ul>
+                    <li>Mathematicians and scientists hate dealing with positive zero and negative zero</li>
+                    <li>For these reasons, computer systems employ <i>complement systems</i> for numeric value representation</li>
+                </ul>
+            </div>
+
+            <h3 id="ones-complement">One's Complement</h3>
+            <div class="notes">
+                <ul>
+                    <li>One's complement is simple: just flip the bits, and you have the negative version of a positive number</li>
+                    <li>(ex) +3 is 00000011, -3 is 11111100</li>
+                    <li>In one's complement representation, as with signed magnitude, negative values are indicated by a 1 in the high order bit</li>
+                    <li>Complement systems are useful because they eliminate the need for subtraction The difference of two values is found by adding.</li>
+                </ul>
+                <p><b>One's Complement Subtraction: </b></p>
+                <ul>
+                    <li>With one's complement addition, the carry bit is "carried around" and added to the sum</li>
+                    <li>(ex.) Using one's complement binary arithmetic, find the sum of 48 and -19</li>
+                </ul>
+                <img class="notes-img" src="notes-imgs/ones-complement-sub.png">
+                <ul>
+                    <li>Although the "end carry around" adds some complexity, one's complement is simpler to implement than signed magnitude</li>
+                    <li>But it still has the disadvantage of having two different representations for zero: positive zero and negative zero</li>
+                    <li>Two's complement solves this problem.</li>
+                </ul>
+            </div>
+
+            <h3 id="two-complement">Two's Complement</h3>
+            <div class="notes">
+                <ul>
+                    <li>To express a value in two's complement representation:</li>
+                    <ul>
+                        <li>If the number is positive, just convert it to binary and you're done</li>
+                        <li>If the number is negative, find the one's complement of the number and then add 1.</li>
+                        <li>Example: </li>
+                        <ul>
+                            <li>In 8-bit binary, 3 is 00000011</li>
+                            <li>-3 using one's complement representation: 11111100</li>
+                            <li>Add 1 gives us -3 in two's complement form: 11111101</li>
+                        </ul>
+                    </ul>
+                    <li>With two's complement arithmetic, all we do is add our two binary numbers. Just discard any carries emitting from the high order bit.</li>
+                </ul>
+            </div>
+
+            <h3 id="to-note">To Note</h3>
+            <div class="notes">
+                <ul>
+                    <li><b>Signed Data Types (int8_t, signed char)</b></li>
+                    <ul>
+                        <li>The left most bit (most significant bit) acts as a sign bit</li>
+                        <li>A leading 1 indicates a negative value; a leading 0 indicates a positive value.</li>
+                        <li>Uses Two's Complement representation, making the leftmost bit worth -128 in an 8 bit number.</li>
+                        <li>Example: 11101101 &rightarrow; -128 + 64 + 32 + 8 + 4 + 1 = -19</li>
+                    </ul>
+                    <li><b>Unsigned Data Types (uint8_t, unsigned char)</b></li>
+                    <ul>
+                        <li>All bits represent positive magnitude values; there are no negative numbers</li>
+                        <li>The leftmost bit is just a regular power of two (+128 in an 8-bit number)</li>
+                        <li>Example: 11101101 &rightarrow; +128 + 64 + 32 + 8 + 4 + 1 = 237</li>
+                    </ul>
+                    <li><b>Key Takeaway</b></li>
+                    <ul>
+                        <li>The binary sequence in memory (11101101) remains identical in both cases</li>
+                        <li>The variable declaration (signed vs unsigned) tells the CPU which math rules to apply to those bits.</li>
+                    </ul>
+                </ul>
+            </div>
+
+            <h3 id="overflow">Overflow</h3>
+            <div class="notes">
+                <ul>
+                    <li>When we use any finite number of bits to represent a number, we always run the risk of the result of our calculations becoming too large to be stored</li>
+                    <li>While we can't always prevent overflow, we can always detect overflow</li>
+                    <li>In complement arithmetic, an overflow condition is easy to detect</li>
+                    <li>Non zero carry from seventh bit for (107+46) overflows into the sign bit, giving us erroneous result</li>
+                    <li>* but a carry into the sign bit doesn't always mean we have an error</li>
+                    <li><b>Rule:</b> When the "carry in" and the "carry out" of the sign bit differ, overflow has occured. If the carry into the sign bit equals the carry out of the sign bit, no overflow has occured</li>
+                </ul>
+            </div>
+            
+
+            <h3 id="unsigned-usage">Unsigned Numbers Usage</h3>
+            <div class="notes">
+                <ul>
+                    <li>Signed and unsigned numbers are both useful</li>
+                    <ul>
+                        <li>memory addresses are always unsigned</li>
+                    </ul>
+                    <li>Using the same number of bits, unsigned integers can express twice as many positive values as signed numbers</li>
+                </ul>
+            </div>
+
+            <h3 id="mult-div">Multiplication and Division</h3>
+            <div class="notes">
+                <ul>
+                    <li>We can do binary mult. and div. by 2 very easily using a bitshift operation</li>
+                    <li>The left bit shift inserts a 0 in for the rightmost bit and shifts everything else left one bit; in effect, it multiplies by two</li>
+                    <li>A right bit shift shifts everything one bit to the right, but copies the sign bit; it divides by 2</li>
+                </ul>
+            </div>
+
+        </div>
+
+
+
+    </main>
+
+    <footer>
+        <div id="petting">
+            <img src="imgs/pet_fuhua.png" class="companion" id="pet-fuhua">
+        </div>
+    </footer>
+</body>
+
+</html>

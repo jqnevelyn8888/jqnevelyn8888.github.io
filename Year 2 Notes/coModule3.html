@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="y2s1.css">
+    <link rel="icon" type="image/x-icon" href="../imgs/favicon.ico?v=2">
+    <link href="https://googleapis.com" rel="stylesheet">
+
+    <script src="../main.js" defer></script>
+
+    <title>Computer Organization - Module 1</title>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navigation">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../stats.html">Stats</a></li>
+                <li>
+                    <a href="#" class="no-hover" id="nav-no-hover">
+                        <span>Pretty mode: </span>
+                        <label class="switch">
+                            <input type="checkbox" id="pretty-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </a>
+                </li>
+
+
+            </ul>
+        </nav>
+
+    </header>
+
+    <main>
+        <h1>Module 2</h1>
+        <div class="table-of-contents">
+            <ol>
+                <li><a href="#reading-notes">Reading Notes</li>
+                <ul>
+                    <li><a href="#module3Reading1"></a></li>
+                    <li><a href="#module3Reading2"></a><span><b>** has quiz</b></span></li>
+                    <li><a href="#module3Reading3">Boolean Algebra </a><span><b>** has quiz</b></span></li>
+                    <li><a href="#module3Reading4">Sum of Products Form </a><span><b>** has quiz</b></span></li>
+                </ul>
+                <li><a href="#class-notes">Class Notes</a></li>
+                <ul>
+                    <li><a href="#floating-point-representation">Floating Point Representation</a></li>
+                    <li><a href="#the-real-world">The Real World</a></li>
+                </ul>
+            </ol>
+        </div>
+
+        <hr>
+
+        <div id="reading-notes">
+            <h2>Reading Notes</h2>
+
+
+        </div>
+
+        <hr>
+
+        <div id="class-notes">
+            <h2>Class Notes</h2>
+
+            <h3 id="floating-point-representation">Floating-Point Representation</h3>
+            <div class="notes">
+                <ul>
+                    <li>The signed magnitude, one's complement, and two's complement representation that we have just
+                        presented deal with signed integer values only.</li>
+                    <li>Without modification, these formats are not useful in scientific or business applications that
+                        deal with real number values</li>
+                    <li>Floating-point representation solves this problem.</li>
+                    <li>If we are clever programmers, we can perform floating-point calculations using any integer
+                        format.</li>
+                    <li>This is called <i>floating-point emulation</i>, because floating point values aren't stored as
+                        such; we just create programs that make it seem as if floating-point values are being used.</li>
+                    <li>Most of today's computers are equipped with specialized hardware that performs floating-point
+                        arithmetic with no special programming required.</li>
+                </ul>
+
+                <ul>
+                    <li>Floating-point numbers allow an arbitrary number of decimal places to the right of the decimal
+                        point.</li>
+                    <ul>
+                        <li>(ex.) 0.5 &times; 0.25 = 0.125</li>
+                    </ul>
+                    <li>Often expressed in scientific notation</li>
+                    <ul>
+                        <li>(ex.) 0.125 = 1.25 &times; 10<sup>-1</sup></li>
+                    </ul>
+                    <li>Computers use a form of scientific notation for floating-point representation</li>
+                    <li>Numbers written in scientific notation have three components.</li>
+                    <img class="notes-img" src="notes-imgs/sci-notation.png">
+                    <li>Computer Representation of a floating-point number consists of three fixed-size fields:</li>
+                    <img class="notes-img" src="notes-imgs/comp-representation.png">
+                    <li>This is the standard arrangement of these fields. &uarr; </li>
+                    <ul>
+                        <li>One Big Sign &rightarrow; Sign of the stored value (+ or -)</li>
+                        <li>Size of exponent field &rightarrow; Range of values that can be represented</li>
+                        <li>Significand &rightarrow; determines the precision of the representation</li>
+                    </ul>
+                    <li>Hypothetic simple model:</li>
+                    <ul>
+                        <li>A floating-point number is 14 bits in length</li>
+                        <li>The exponent field is 5 bits</li>
+                        <li>Significand field is 8 bits</li>
+                    </ul>
+                    <li>Significand always precede by an implied binary point</li>
+                    <ul>
+                        <li>thus significand always contains a fractional binary value</li>
+                    </ul>
+                    <li>Exponent indicates the power of 2 by which the significand is multiplied</li>
+                    <li>(ex.) express 32.0<sub>10</sub> in the simplified 14-bit floating point model</li>
+                    <ul>
+                        <li>32 = 2<sup>5</sup>. In (binary)scientific notaion 32 = 1.0 </li>
+                    </ul>
+                </ul>
+            </div>
+
+
+
+            <h3 id="the-real-world">The Real World</h3>
+
+        </div>
+
+
+
+    </main>
+
+    <footer>
+        <div id="petting">
+            <img src="imgs/pet_fuhua.png" class="companion" id="pet-fuhua">
+        </div>
+    </footer>
+</body>
+
+</html>

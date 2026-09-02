@@ -45,12 +45,25 @@
             <ol>
                 <li><a href="#reading-notes">Reading Notes</li>
                 <ul>
-                    <li><a href="#mod1reading1">Simple Understanding of a Computer</a></li>
-                    <li><a href="#mod1reading2">Issues in Computer Design</a></li>
+                    <li><a href="#mod1reading1">Simple Understanding of a Computer</a> <span><b>** has quiz</b></span></li>
+                    <li><a href="#mod1reading2">Issues in Computer Design</a> <span><b>** has quiz</b></span></li>
+                    <li><a href="#mod1reading3">Computer System Level Hierarchy</a></li>
+                    <li><a href="#mod1reading4">Difference between assembly language and high level language</a></li>
+                    <li><a href="#mod1reading5">Von Neumann architecture</a> <span><b>** has quiz</b></span></li>
+                    <li><a href="#mod1reading6">Harvard architecture</a> <span><b>** has quiz</b></span></li>
+                    <li><a href="#mod1reading7">Differences between computer architecture and computer organization</a></li>
+                    <li><a href="#mod1reading8">Standard organizations for data communications</a></li>
+                    <li><a href="#mod1reading9">Units of information</a></li>
+                    <li><a href="#mod1reading10">Clock speed</a></li>
+                    <li><a href="#mod1reading11">Moore’s Law</a></li>
+                    <li><a href="#mod1reading12">Moore's Second Law (aka Rock's Law)</a></li>
                 </ul>
                 <li><a href="#class-notes">Class Notes</a></li>
                 <ul>
-                    <li><a href="#08192026">8/19/2026</a></li>
+                    <li><a href="#practice">Practice</a></li>
+                    <li><a href="#compterms">Computer Terms</a></li>
+                    <li><a href="#history">Historical Developments</a></li>
+                    <li><a href="#vonneumannmodel">Von Neumann Model</a></li>
                 </ul>
             </ol>
         </div>
@@ -126,12 +139,373 @@
             </div>
 
             <h3 id="mod1reading2">2) <a
-                    href="https://www.geeksforgeeks.org/computer-organization-architecture/issues-in-computer-design/">Issues
+                    href="https://www.geeksforgeeks.org/computer-organization-architecture/issues-in-computer-design/"
+                    target="_blank">Issues
                     in Computer Design</a></h3>
             <div class="notes">
                 <p><strong>Issues in Computer Design: </strong>Performance, security risks, software-hardware co-design,
                     resource and technical constraints</p>
             </div>
+
+            <h3 id="mod1reading3">3) <a
+                    href="https://www.geeksforgeeks.org/computer-organization-architecture/computer-system-level-hierarchy/"
+                    target="_blank">Computer System Level Hierarchy</a></h3>
+            <div class="notes">
+                <ol>
+                    <li><b>Level 0: Digital Logic</b> &rightarrow; circuits, gates</li>
+                    <ul>
+                        <li>Digital logic is the basis for digital computing and provides a fundamental understanding of
+                            how circuits and hardware communicate within a computer. Consists of various circuits and
+                            gates etc.</li>
+                    </ul>
+                    <li><b>Level 1: Control</b> &rightarrow; Microcode</li>
+                    <ul>Control is the level where microcode is used in the system</ul>
+                    <li><b>Level 2: Machine</b> &rightarrow; Instruction set architecture</li>
+                    <ul>
+                        <li>consists of machines, different types of hardware. Contains instruction set architecture
+                        </li>
+                    </ul>
+                    <li><b>Level 3: System Software</b> &rightarrow; operating system</li>
+                    <li><b>Level 4: Assembly language</b> &rightarrow; Assembly code</li>
+                    <li><b>Level 5: High level language</b> &rightarrow; C++, Java</li>
+                    <li><b>Level 6: User</b> &rightarrow; executable program</li>
+                </ol>
+
+                <h4>Different levels of hierarchy:</h4>
+                <p> Hardware, firmware (software that is stored in non-volatile memory like BIOS and is responsible for
+                    initializing and controlling the hardware), OS, Application</p>
+
+                <h4>Features of the Computer System Level Hierarchy: </h4>
+                <ul>
+                    <li><b>Abstraction: </b>Hides complicated hardware details so programmers can work with simplier
+                        concepts </li>
+                    <li><b>Modularity: </b>Each level can be developed and changed separately, making the system easier
+                        to maintain.</li>
+                    <li><b>Interoperability: </b>Different levels work together so software can run on different
+                        hardware and operating systems</li>
+                    <li><b>Scalability: </b>Makes it easier to add new components or features as the system grows</li>
+                    <li><b>Security: </b>Separating the levels helps protect the system and reduce security risks</li>
+                </ul>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Advantages</th>
+                            <th>Disadvantages</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li>Modularity &rightarrow; makes individual components easier to dveelop, test, and
+                                        maintain</li>
+                                    <li>Standardization &rightarrow; standard interfaces and protocols make it easier to
+                                        add new components and reuse existing ones.</li>
+                                    <li>Abstraction &rightarrow; hides lower-level details, allowing users and
+                                        programmers to work at a higher level</li>
+                                    <li>Scalability &rightarrow; Makes it easier to handle larger workloads by adding
+                                        resources or components</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Overhead &rightarrow; extra layers can add complexity and reduce performance
+                                    </li>
+                                    <li>Dependencies &rightarrow; changes in one layer can affect other layers, making
+                                        updates more difficult</li>
+                                    <li>Inefficiency &rightarrow; components at different levels may not work together
+                                        as efficiently as possible</li>
+                                    <li>Complexity &rightarrow; more layers and components can make the system harder to
+                                        understands and navigate.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 id="mod1reading4">4) <a href="https://www.geeksforgeeks.org/computer-organization-architecture/difference-between-assembly-language-and-high-level-language/" target="_blank">
+                Difference between assembly and high level language
+            </a></h3>
+            <div class="notes">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Assembly</th>
+                            <th>High Level</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li>Low level language understandable by machines</li>
+                                    <li>Uses short, readable codes instead of 0s and 1s to represent instructions.</li>
+                                    <li>Needs assembler for conversion</li>
+                                    <li>Advantages: </li>
+                                    <ul>
+                                        <li>execution of code is efficient</li>
+                                        <li>low-level operations can be performed</li>
+                                        <li>high control over hardware</li>
+                                    </ul>
+                                    <li>Disadvantages: </li>
+                                    <ul>
+                                        <li>more complex</li>
+                                        <li>more time consuming</li>
+                                        <li>lack of portability</li>
+                                    </ul>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Understandable by humans</li>
+                                    <li>Machine independent language</li>
+                                    <li>Needs compiler/interpreter for conversion</li>
+                                    <li>Advantages: </li>
+                                    <ul>
+                                        <li>increase readability</li>
+                                        <li>portability</li>
+                                        <li>faster development</li>
+                                    </ul>
+                                    <li>Disadvantages: </li>
+                                    <ul>
+                                        <li>Slower execution</li>
+                                        <li>Memory usage</li>
+                                        <li>Less control over hardware</li>
+                                    </ul>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <h3 id="mod1reading5">5) <a href="https://www.geeksforgeeks.org/computer-organization-architecture/computer-organization-von-neumann-architecture/" target="_blank">Von Neumann Architecture</a></h3>
+            <div class="notes">
+                <p>Von Neumann architecture is a computer design where the instructions and data share the same bus. Meaning the CPU fetch both instruction and data from the same memory and through the same pathways.</p>
+                <p>2 types of computers: </p>
+                <ol>
+                    <li><b>Fixed Program Computers:</b> function very specific and cannot be reprogrammed (calculators)</li>
+                    <li><b>Stored Program Computers:</b> can be programmed to carry out many different tasks. Applications are stored to them.</li>
+                </ol>
+                <img class="notes-img" src="notes-imgs/VNM2.png">
+
+                <h4>3 main components:</h4>
+                <ol>
+                    <li><b>CPU</b></li>
+                    <ul>
+                        <li>main part of computer. Comprised of control unit, arithmetic logic unit (ALU), and registers (NOT RAM).</li>
+                        <li><b>CU (Control Unit)</b></li>
+                        <ul>
+                            <li>Manages how processor works</li>
+                            <li>Sends control signals</li>
+                            <li>decides how data move</li>
+                            <li>controls input and output operations</li>
+                            <li>fetches intructions from memory</li>
+                        </ul>
+                        <li><b>ALU (Arithmetic and Logic Unit</b></li>
+                        <ul>
+                            <li>Handles calculations</li>
+                            <li>makes decisions</li>
+                            <li>Performs arithmetic and logical operations and tasks like shifting bits in data</li>
+                        </ul>
+                        <li><b>Registers</b></li>
+                        <ul>
+                            <li>Fastest type of memory located in CPU</li>
+                            <li>Temporary store information that processor is currently working on.</li>
+                            <li>Makes program execution and operations faster and more efficient</li>
+                            <li>Types: </li>
+                            <ul>
+                                <li>PC (program counter) &rightarrow; Keeps track of the address of the next instruction to be executed.</li>
+                                <li>IR (Instruction Register) &rightarrow; Holds the current instruction being executed.</li>
+                                <li>MAR (Memory Address Register) &rightarrow; Stores the address of the memory location being accessed.</li>
+                                <li>Accumulator &rightarrow; A register that stores intermediate results of arithmetic and logic operations.</li>
+                                <li>General Purpose Registers &rightarrow; Used for temporary storage of data during processing.</li>
+                            </ul>
+                        </ul>
+                    </ul>
+
+                    <li><b>Memory</b></li>
+
+                    <li><b>I/O devices</b></li>
+                    <ul>
+                        <li>Keyboard, mouse, etc</li>
+                    </ul>
+                    
+                </ol>
+
+                <p><b>Bus</b> &rightarrow; transfers data, addresses, control signals between CPU, memory, and I/O devices</p>
+
+                <p>VNM Key characteristics: </p>
+                <ul>
+                    <li>Single mrmory for data and instructions</li>
+                    <li>Shared bus</li>
+                    <li>Sequential execution &rightarrow; instructions executed one at a time</li>
+                </ul>
+
+                <p><b>VNM bottleneck: </b>CPU processes instructions one at a time in a sequence, restricting overall performance even with faster hardware.</p>
+
+            </div>
+
+            <h3 id="mod1reading6">6) <a href="https://www.geeksforgeeks.org/computer-organization-architecture/harvard-architecture/" target="_blank">Harvard Architecture</a></h3>
+            <div class="notes">
+                <p>Avoids the bottleneck present in traditional Von Neumann systems.</p>
+                <ul>
+                    <li>Faster and predictable performance (good for real-time systems)</li>
+                    <li>Parallel access to both instructions and data</li>
+                </ul>
+                <img class="notes-img" src="notes-imgs/VNM3.png">
+                <p><b>Instructions and data use separate memory and buses</b>, allowing them to be accessed at the same time and making processing faster</p>
+                <p>Applications include DSPs (audio, video), network processors, automotive systems, etc.</p>
+            </div>
+
+            <h3 id="mod1reading7">7) <a href="https://www.geeksforgeeks.org/computer-organization-architecture/differences-between-computer-architecture-and-computer-organization/" target="_blank">Differences between Computer Architecture and Computer Organization</a></h3>
+            <div class="notes">
+                <h4><u>Computer Architecture</u></h4>
+                <ul>
+                    <li>The design and functional aspects of a computer</li>
+                    <li>Focus on hardware components like CPU and memory</li>
+                    <li>Involves decisions about instruction set, data paths, and control units to optimize performance and functionality</li>
+                    <li><b>What the computer does</b> and serves as <b>blueprint for designing computer systems</b></li>
+                    <li>Before computer organization.</li>
+                </ul>
+
+                <p>Advantages: </p>
+                <ul>
+                    <li>Performance: Good architecture makes the computer work faster and more efficiently</li>
+                    <li>Flexibility: It can adapt to new technologies and different hardware</li>
+                    <li>Scalability: It can be expanded or upgraded in the future.</li>
+                </ul>
+
+                <p>Disadvantages: </p>
+                <ul>
+                    <li>Complexity: designing and optimizing a computer system can be difficult and time-consuming</li>
+                    <li>Cost: High-performance systems often require expensive hardware.</li>
+                </ul>
+
+                <p>More notes: </p>
+                <ul>
+                    <li>deals with high level design issues</li>
+                    <li>Also called Instruction Set Architecture (ISA)</li>
+                    <li>Computer Architecture comprises logical functions such as instruction sets, registers, data types, and addressing modes.</li>
+                    <li>Software developer aware of it</li>
+                </ul>
+
+                <h4><u>Computer Organization</u></h4>
+                <ul>
+                    <li>Deals with physical implementation and interconnection of hardware components</li>
+                    <li>Computer organization describes how the computer does what it does.</li>
+                    <li>Ensures the architectural design is translated into a functional, physical system.</li>
+                </ul>
+
+                <p>Advantages: </p>
+                <ul>
+                    <li>Practical implementation: Shows how the computer's hardware is physically set up and works</li>
+                    <li>Cost efficiency: Helps avoid wasting resources, which saves money.</li>
+                    <li>Reliability: Makes sure the computer produces consistent results.</li>
+                </ul>
+
+                <p>Disadvantages: </p>
+                <ul>
+                    <li>Hardware limitations: Performance is limited by the hardware available</li>
+                    <li>Less flexibility: Hardware is harder to change or modify once it is set up.</li>
+                </ul>
+
+                <p>More notes:</p>
+                <ul>
+                    <li>Deals with low level</li>
+                    <li>Frequently called microarchitecture</li>
+                    <li>Consist of physical units like circuit designs, peripherals, and adders</li>
+                    <li>escapes software developer's detection</li>
+                </ul>
+
+                <img src="notes-imgs/AvsO.png" class="notes-img">
+
+
+            </div>
+
+            <h3 id="mod1reading8">8) <a href="https://www.geeksforgeeks.org/computer-networks/standard-organizations-for-data-communications/" target="_blank">Standard Organizations for Data Communications</a></h3>
+            <div class="notes">
+                <p><b>Data Communication</b> refers to the exchange of data between two devices via some form of transmission media such as a cable, wire, or air/vacuum</p>
+                <img class="notes-img" src="notes-imgs/datacomm.png">
+
+                <p>Standard Organizations for Data Communication: </p>
+                <ol>
+                    <li><b>ISO (International Organization for Standardization</b></li>
+                    <ul>
+                        <li>Creates international rules and standards for data communication, documents, graphics, etc</li>
+                    </ul>
+                    <li><b>CCITT (Consultative Committee for International Telephony and Telegraphy)</b></li>
+                    <ul>
+                        <li>Creates standards for telephone and telegraph communication</li>
+                        <li>Main standards:</li>
+                        <ol>
+                            <li>V Series: modem communication</li>
+                            <li>X series: data communication</li>
+                            <li>Q series: ISDN (digital telephone network)</li>
+                        </ol>
+                    </ul>
+                    <li><b>ANSI (American nation standards institue)</b></li>
+                    <ul>
+                        <li>Develops and promotes technoloy and communication standards in the U.S</li>
+                    </ul>
+                    <li><b>IEEE (institute of electrical and electronics engineers)</b></li>
+                    <ul>
+                        <li>Creates standards for electronics, computers, communication, and networking.</li>
+                    </ul>
+                    <li><b>EIA (Electronic Industries Association</b></li>
+                    <ul>
+                        <li>Creates industry standards for electronics and communication like RS series</li>
+                    </ul>
+                    <li><b>SCC (Standards Council of Canada</b></li>
+                    <ul>
+                        <li>ANSI but for canada</li>
+                    </ul>
+                </ol>
+
+            </div>
+
+            <h3 id="mod1reading9">9) <a href="https://en.wikipedia.org/wiki/Units_of_information" target="_blank">
+Units of information</a></h3>
+            <div class="notes">
+                <p>Hartley (1928) and Shannon (1945) found that the amount of information a system can store depends on the number of possible states it has.</p>
+                <ul>
+                    <li>More possible states = more information</li>
+                    <li>logarithms are used to measure this information. Base of log determines unit used to measure information.</li>
+                </ul>
+            </div>
+
+            <h3 id="mod1reading10">10) <a href="https://www.geeksforgeeks.org/computer-organization-architecture/clock-speed/" target="_blank">Clock Speed</a></h3>
+            <div class="notes">
+                <p><b>Clock speed</b> &rightarrow; measures how fast a computer's CPU can execute instructions. Higher clock speed typically means CPU can process more instructions per second.</p>
+                <p>Advantages of high clock speed: Improved performance, better multitasking, greater efficiency</p>
+                <p>Disadvantages of high clock speeds: increased power consumption, increased cost, limited by other factors</p>
+                <p>There is a point where increasing the clock speed no longer results in a significant increase in performance. Known as <b>performance plateau</b></p>
+                <p><b>Overclocking</b> &rightarrow; increasing a CPU's clock speed beyond its normal setting to make it perform calculations faster</p>
+                <ul>
+                    <li>faster CPU performance</li>
+                    <li>More heat</li>
+                    <li>Stability problems</li>
+                    <li>Overvolting</li>
+                </ul>
+            </div>
+
+            <h3 id="mod1reading11">11) <a href="https://www.geeksforgeeks.org/computer-organization-architecture/moores-law/" target="_blank">Moore's Law</a></h3>
+            <div class="notes">
+                <p>According to Moore's law for every two years, the number of transistor's in integrated circuits doubles, which increases computing power and lowers cost.</p>
+            </div>
+
+            <h3 id="mod1reading12">12) <a href="https://en.wikipedia.org/wiki/Moore's_second_law" target="_blank">Moore's Second Law (Rock's Law)</a></h3>
+            <div class="notes">
+                <p>The cost of semiconductor chip fabrication plant doubles every four years.</p>
+                <ul>
+                    <li>The factories become so expensive that eventually the industry may have trouble affording them, even though the cost of individual transistors keeps falling.</li>
+                </ul>
+            </div>
+
 
         </div>
 
@@ -139,9 +513,8 @@
 
         <div id="class-notes">
             <h2>Class Notes</h2>
-            <h3 id="08192026">Module 1</h3>
+            <h3 id="practice">Practice</h3>
             <div class="notes">
-                <h4>Practice</h4>
                 <table>
                     <thead>
                         <tr>
@@ -194,6 +567,11 @@
                     </tbody>
                 </table>
 
+            </div>
+
+            <h3 id="compterms">Computer Terms</h3>
+            <div class="notes">
+
                 <h4>3 Major Components of a Computer: </h4>
                 <ul>
                     <li>Processor to interpret and execute commands</li>
@@ -232,7 +610,7 @@
 
                 <h4>Example: For sale &rightarrow; Computer</h4>
                 <table>
-                    <thead>  
+                    <thead>
                         <tr>
                             <th>Detail</th>
                             <th>Explanation</th>
@@ -241,27 +619,293 @@
                     <tbody>
                         <tr>
                             <td>Intel Pentium Dual Core, 6.06 GHz</td>
-                            <td>The microprocessor is the "brain" of the system. It executes program instructions. This one is an Intel Pentium dual-core (2 processors) with the clock "ticking" 3.06 billion times per second.</td>
+                            <td>The microprocessor is the "brain" of the system. It executes program instructions. This
+                                one is an Intel Pentium dual-core (2 processors) with the clock "ticking" 3.06 billion
+                                times per second.</td>
                         </tr>
                         <tr>
                             <td>1333 MHz 4GB DDR SDRAM</td>
                             <td>
                                 <ul>
-                                    <li>A system bus moves data within the computer (e.g between the CPU and memory). The faster the bus the better. This one runs at 1333 MHz.</li>
+                                    <li>A system bus moves data within the computer (e.g between the CPU and memory).
+                                        The faster the bus the better. This one runs at 1333 MHz.</li>
                                     <li>This system has 4GB of double data rate synchronous dynamic RAM (DDR SDRAM)</li>
                                 </ul>
                             </td>
                         </tr>
                         <tr>
                             <td>128KB L1 cache, 2MB L2 cache</td>
-                            <td>System has two levels of cache memory, the level 1 (L1) cache is smaller and faster than the L2 cache.</td>
+                            <td>System has two levels of cache memory, the level 1 (L1) cache is smaller and faster than
+                                the L2 cache.</td>
                         </tr>
                     </tbody>
-                </table>
+                </table><br>
+                <b>Example - Memory</b>
+                <ul>
+                    <li>Computers with large main memory capacity can run larger programs with greater speed than
+                        computers with smaller memories.</li>
+                    <li>RAM stands for <em>random access memory.</em> That means memory contents can be accessed
+                        directly if you know their locations. There are many kinds of RAM.</li>
+                    <ul>
+                        <li><b>SDRAM:</b> synchronous dynamic RAM</li>
+                        <li><b>DDR SDRAM:</b> Double data rate synchronous dynamic RAM</li>
+                    </ul>
+                    <li>Cache is a type of temporary memory that can be accessed faster than RAM.</li>
+                </ul>
+                <p>Hard disk capacity determines the amount of data and size of programs you can store.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Detail</th>
+                            <th>Explanation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>500GB Serial ATA hard drive (7200 RPM)</td>
+                            <td>
+                                <ul>
+                                    <li>This hard disk can store 500 GB. 7200 RPM is the rotaional speed of the disk.
+                                        Generally, the faster a disk rotates, the faster it can deliver data to RAM.
+                                    </li>
+                                    <li>ATA stands for advanced technology attachment, it describes how the hard disk
+                                        interfaces (connects to) with other system components.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Choice of moniter: 19", .24mm AG, 1280x1024 at 75Hz or 18.5", 1280x1024 SXGA, 250 cd/m2,
+                                active matrix, 1000:1 (static), 5ms, 24-bit color(16.7 million colors), VGA/DVI input
+                            </td>
+                            <td>Moniter can be 19" CRT, 75Hz refresh rate, .24mm dot pitch; or 18.5" LCD SXGA (4:3 with
+                                native resolution 1280x1024), 5ms response time, 1000:1 contrast ratio</td>
+                        </tr>
+                    </tbody>
+                </table><br>
+                <b>Example - Monitors</b>
+                <ul>
+                    <li><b>CRT (Cathode Ray Tube):</b></li>
+                    <ul>
+                        <li>Moves an electron beam back and forth lighting up phosphor dots</li>
+                        <li>Refresh rate = how often the dots get redrawn</li>
+                        <li>Dot pitch = the space between dots</li>
+                        <li>Screen space is measured diagonally</li>
+                    </ul>
+                    <li><b>LCD (Liquid Crystal Display)</b></li>
+                    <ul>
+                        <li>Uses liquid crystals between polarized glass. Electricity controls which colors of light
+                            pass through. </li>
+                        <li>Active matrix: 1 transistor per pixel</li>
+                        <li>Passive matrix: Transistors activate an entire row, used in things like calculataors and
+                            clocks.</li>
+                        <li>Aspect ratio: ratio of horizontal pixels to vertical pixels</li>
+                        <li>Native resolution: the screen's optimal resolution</li>
+                        <li>Viewing angle: Angle at which you can still clearly see the image</li>
+                        <li>Response time: how quickly pixels can change color</li>
+                        <li>Luminance: screen brightness, measured in candela per square meter</li>
+                        <li>Contrast ratio: ratio between the brightest and darkest versions of a color</li>
+                        <li>Color depth: number of colors that can be displayed at once.</li>
+                    </ul>
+                </ul>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Detail</th>
+                            <th>Explanation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>4USB ports, 1 serial port, 1 parallel port, 4 PCI expansion slots (1 PCI, 1PCI x 16, 2
+                                PCI x 1)</td>
+                            <td>
+                                This system has 10 ports (4 are expansion slots). PCIx16 = PCI-x and PCIxI = PCIe <br>
+                                <ul>
+                                    <li>PCI-X &rightarrow; older technology, commonly found in servers</li>
+                                    <li>PCIe (PCI Express) &rightarrow; newer and much more common today. Used for
+                                        graphics cards, Wi-Fi cards, sound cards, etc.</li>
+                                    <li>Motherboard &rightarrow; PCI-X slot &rightarrow; expansion card</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table><br>
+
+                <b>Example - Ports</b>
+                <ul>
+                    <li><b>Ports</b> allow connections between devices. They are like outlets.</li>
+                    <ul>
+                        <li><b>Serial ports</b> send data as series of pulses along one or two data lines.</li>
+                        <ul>
+                            <li>Data lines are the physical or electronic pathways that carry data between computer
+                                components.</li>
+                        </ul>
+                        <li><b>Parallel ports</b> send data as a single pulse along at least eight data lines</li>
+                    </ul>
+                    <li>A <b>bus</b>, in general, connects a component to another component. It's like the cord you plug
+                        into the outlet.</li>
+                    <ul>
+                        <li>The system bus on the motherboard</li>
+                        <li>The ribbon cable that connects the hard drive to the motherboard</li>
+                        <li>The wires connecting the keyboard's USB port to the motherboard</li>
+                    </ul>
+                    <li>Ports have protocols/interfaces (set of rules) they use to transfer data</li>
+                    <ul>
+                        <li><b>USB</b>, Universal Serial Bus, is a connection that sends data one bit at a time and
+                            automatically sets itself up when you connect a device.</li>
+                    </ul>
+                    <li>Expansion slots are also ports</li>
+                    <ul>
+                        <li>Place on the motherboard to plug an entire board for a new device</li>
+                        <li>PCI (Peripheral Component Interface) is a specific interface for various devices. Has
+                            newer/faster versions PCIx (parallel) and PCLe (serial)</li>
+                    </ul>
+                </ul>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Detail</th>
+                            <th>Explanation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>16X DVD +/- RW Drive</td>
+                            <td>Can read and write to DVD that is 16 times faster than original standard</td>
+                        </tr>
+                        <tr>
+                            <td>Integrated 10/100/1000 ethernet</td>
+                            <td>Ethernet integrated in motherboard, up to gigabit Ethernet (1000)</td>
+                        </tr>
+                    </tbody>
+                </table><br>
+                <b>Example - Networking</b>
+                <ul>
+                    <li><b>Ethernet: International standard for wired networks</b></li>
+                    <ul>
+                        <li>Hardware: uses NIC (network interface card)</li>
+                        <li>Comes in different speeds such as 10/100 = card can support 10 Mbps (megabits per second) to
+                            fast ethernet of 100 Mbps</li>
+                        <li>Integrated means part of motherboard and not separate card plugged into expansion slot</li>
+                    </ul>
+                    <li>Wireless can be integrated or not.</li>
+                </ul>
+
+                <h4>Standard organizations</h4>
+                <ul>
+                    <li>IEEE = Institute of Electrical and Electronics engineers</li>
+                    <li>ITU = International Telecommunications Union (used to be CCITT)</li>
+                    <li>ANSI = American National Standards Institute</li>
+                    <li>ISO = International Organization for Standardization</li>
+                </ul>
 
             </div>
 
+
+            <h3 id="history">Historical Developments</h3>
+            <div class="notes">
+                <ol>
+                    <li><b>Gen 0 (Pre-1945): Mechanical Devices</b> &rightarrow; Gear-based systems like Pascaline and
+                        Babbage's Difference Engine.</li>
+                    <li><b>Gen 1 (1945-1953): Vacuum Tubes</b> &rightarrow; First electronic digital computers (ENIAC,
+                        ABC, etc); bulky, slow, prone to hardware failure</li>
+                    <li><b>Gen 2 (1954-1965): Transistors</b> &rightarrow; replaces tubes, dramatically shrinking
+                        computer size and power consumption</li>
+                    <li><b>Gen 3 (1965 - 1980): Integrated Circuits (ICs)</b> &rightarrow; Multiple transistors on
+                        single silicon chips (IBM 360, Cray-1)</li>
+                    <li><b>Gen 4 (1980 - Present):</b> VLSI (very large scale integration) &rightarrow; Tens of
+                        thousands + transistors per chip, enabling modern microprocessors and personal computers.</li>
+                </ol>
+
+                <h4>Key laws and concepts: </h4>
+                <ul>
+                    <li><b>Moore's Law:</b> Transistor density on integrated circuits doubles approximately every 18
+                        months to 2 years.</li>
+                    <li><b>Rock's Law: </b> The capital cost of equipment required to manufacture semiconductors doubles
+                        every 4 years.</li>
+                    <li>For Moore's law to hold, Rock's law must fall, or vice versa. Otherwise, by 2035 the size of a
+                        memory element will be smaller than an atom and the cost to build a single chip will be the
+                        entire wealth of the world.</li>
+                </ul>
+
+            </div>
+
+            <h3 id="vonneumannmodel">Von Neumann Model</h3>
+            <div class="notes">
+                <h4>Stored Program Computer</h4>
+                <div class="notes-img">
+                    <div class="text">
+                        <ul>
+                            <li><u>CPU</u> (Central Processing Unit)</li>
+                            <ul>
+                                <li>ALU</li>
+                                <li>Registers including a PC</li>
+                                <li>Control Units</li>
+                            </ul>
+                            <li><u>Main memory</u> (RAM)</li>
+                            <li>Storage and I/O system (hard drive, display, keyboard)</li>
+
+                        </ul>
+                    </div>
+                    
+                    <!-- todo: fix this -->
+                    <img src="notes-imgs/VNM1.png" class="notes-img">
+                    
+                </div>
+                <h4>Von Neumann <u>execution cycle: </u></h4>
+                <ul>
+                    <li><b>Fetch: </b>get the next instruction from memory</li>
+                    <li><b>Decode: </b>figure out what it is -- e.g., an add where two operands are in registers and the answer goes into memory? </li>
+                    <li><b>Execute: </b>execute the instruction and store the answer</li>
+                </ul>
+
+                <p><u>Fetch</u> &rightarrow; the control unit fetches the next instruction from memory at the memory address in program counter</p>
+                <img class="notes-img" src="notes-imgs/VNM-fetch.png">
+
+                <p><b>Decode: </b>the instruction is decoded and operands are retrieved from memory and placed in registers</p>
+                <img class="notes-img" src="notes-imgs/VNM-decode.png">
+
+                <p><b>Execute: </b> The ALU executes the instruction and stores the result in a register or memory</p>
+                <img class="notes-img" src="notes-imgs/VNM-execute.png">
+
+                <h4>Non-Von Neumann Models</h4>
+                <p>What is a computer doesn't process instructions sequentially? Or doesn't store programs/data in memory?</p>
+                <ul>
+                    <li>Parallel processors = more than one processor, each can have its own memory (or shared). Theoretically, processors can be located anywhere</li>
+                    <li>Multicore processor: all processors in a single chip and they all share the same memory. Can execute multiple instructions simultaneuosly</li>
+                </ul>
+
+                <h4>Amdahl's Law: </h4>
+                <ul>
+                    <li>Used to find maximum expected improvement to the overall system when only one component is improved</li>
+                    <li>In parallel computing, used to predict speedup when using multiple processors</li>
+                    <li>S(N) = 1/[(1-P)+(P/N)]</li>
+                    <li>P = (estimated) percentage of a program that benefits from parallelization; N = # of processors</li>
+                </ul>
+
+                <h4><a href="day2_computer_architectures_intro.html">Computer Architectures Notes Link</a></h4>
+                <ul>
+                    <li><u>Von Neumann Model (1945)</u> &rightarrow; Core idea: stores both data and instructions in the same memory, accessed over a single shared bus.</li> 
+                    <ul>
+                        <li>Input device &rightarrow; Memory (data + code) &leftarrow;&rightarrow; CPU (ALU + CPU) &rightarrow; Output devices</li>
+                    </ul>
+                    <li><u>Harvard architecture</u> &rightarrow; Core idea: uses physically separate memories and buses for instructions and data</li>
+                    <li>Instruction Memory &rightarrow; CPU (ALU + CU) &leftarrow;&rightarrow; Data Memory</li>
+                </ul>
+
+                <h4>DSP (digital signal processor)</h4>
+                <p>specialized processor optimized for fast mathematical processing of digital signals like audio, video, and sensor data.</p>
+                <ul>
+                    <li>Harvard architecture = instructions and data are stored separately.</li>
+                    <li>Allows DSP to fetch an instruction and access data @ same time</li>
+                    <li>This makes DSPs faster and more efficient for repetitive signal-processing tasks.</li>
+                </ul>
+            </div>
         </div>
+
+
 
     </main>
 

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="y2s1.css">
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico?v=2">
+    <link href="https://googleapis.com" rel="stylesheet">
+
+    <script src="../main.js" defer></script>
+
+    <title>Data Structures - Lists</title>
+
+</head>
+
+<body>
+
+    <header>
+        <nav class="navigation">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../stats.html">Stats</a></li>
+                <li>
+                    <a href="#" class="no-hover" id="nav-no-hover">
+                        <span>Pretty mode: </span>
+                        <label class="switch">
+                            <input type="checkbox" id="pretty-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+
+    </header>
+
+    <main>
+        <h1>Data Structures - List Notes</h1>
+        <hr>
+
+        <h2>List: Abstract Datatype</h2>
+        <div class="notes">
+            <ul>
+                <li>Public members</li>
+                <ul>
+                    <li>management &rightarrow; constructor, destructor</li>
+                    <li>usage control &rightarrow; empty, size, clear</li>
+                    <li>data access &rightarrow; insert, erase, push/pop front, front, push/pop back, back, operator []</li>
+                </ul>
+                <li>Private members</li>
+                <ul>
+                    <li>implementation &rightarrow; data storage, support functions</li>
+                </ul>
+            </ul>
+        </div>
+
+        <h2>List Implementation: Array</h2>
+        <div class="notes">
+            <ul>
+                <li>Static memory allocation (compile time)</li>
+                <pre><code>
+                    const int Nmax = 10;
+                    int data[Nmax];
+                </code></pre>
+                <li>Dynamic memory allocation (run time)</li>
+                <pre><code>
+                    int Nmax = 10;
+                    int *data = new int[Nmax];
+                    ...
+                    delete [] data;
+                </code></pre>
+                <li>Insert at back: pos = N</li>
+                <pre><code>
+                    data[N++] = value;
+                </code></pre>
+                <li>Erase at back: pos = N-1</li>
+                <pre><code>
+                    data[--N] = 0;
+                </code></pre>
+                <li>Insert in the middle: pos < N</li>
+                <pre><code>
+                    for (int j = N; pos < j; j--) {
+                        data[j] = data[j-1];
+                    }
+                    data[pos] = value;
+                    N++;
+                </code></pre>
+                <li>Erase in the middle: pos < N-1</li>
+                <pre><code>
+                    for (int j=pos; j < N-1; j++) {
+                        data[j] = data[j+1];
+                    }
+                    data[N-1] = 0;
+                    N--;
+                </code></pre>
+                <li>Resize</li>
+                <pre><code>
+                    int M = Nmax + Nincr;
+                    int *newdata = new int[M];
+
+                    for (int i=0; i < M; i++) newdata[i] = data[i];
+                    for (int i=N; i < M; i++) newdata[i] = 0;
+
+                    delete [] data;
+                    data = newdata;
+                    Nmax = M;
+                </code></pre>
+            </ul>
+        </div>
+
+        <h2>List implementation: Single Linked</h2>
+        <div class="notes">
+            <img class="notes-img" src="notes-imgs/single-linked.png">
+            <ul>
+                <li>Sentinel head node, NULL terminated</li>
+                <pre><code>
+                    struct node { int data; node *next; }
+                </code></pre>
+                <li>Sentinel node: dummy node (no data)</li>
+                <li>Sentinel value: data signaling termination</li>
+                <ul>
+                    <li>NULL character ending C-style string</li>
+                    <li>NULL pointer ending single linked list</li>
+                    <li>Data searched for (guarantees success)</li>
+                </ul>
+                <li>Dynamic memory allocation</li>
+                <pre><code>
+                    int N = 0;
+                    node *head = new node;
+                    
+                    insert: new node, N++
+                    erase: delete node, N--
+                    relink list each time
+
+                    delete head
+                </code></pre>
+                <li>Insert: pos = 0 ... N-1</li>
+                <img class="notes-img" src="notes-imgs/single-linked-insert.png">
+                <pre><code>
+                    1. node *p = new node;
+                       p->data = value;
+                       p->next = NULL;
+
+                    2. node *pp = findnode(pos-1);
+
+                    3. p->next = pp->next;
+                       pp->next = p;
+                </code></pre>
+                <li>Erase: pos = 0 ... N-1</li>
+                <!-- TODO: ADD IMG -->
+                <img> 
+                <pre><code>
+                    1. node *pp = findnode(pos-1);
+                       node *p = pp->next;
+
+                    2. pp->next = p->next;
+
+                    3. delete p;
+                </code></pre>
+            </ul>
+        </div>
+
+        <h2>List Implementation: Double Linked</h2>
+        <div class="notes">
+            <img src="notes-imgs/double-linked.png" class="notes-img">
+            <ul>
+                <li>Sentinel head node, circular termination</li>
+                <pre><code>
+                    struct node { int data; node *prev, *next; }
+                </code></pre>
+                <li>Insert: pos = 0 ... N-1</li>
+                <pre><code>
+                    1. node *p = new node;
+                       p-> data = value;
+                       p->next = p->prev = this
+
+                    2. node *pp = findnode(pos-1)
+
+                    3. p->next = pp->next;
+                       p->prev = pp;
+                       p->next->prev = p;
+                       p->prev->next = p;
+                </code></pre>
+                <li>Erase: pos = 0 ... N-1</li>
+                <pre><code>
+                    1. node *p = findnode(pos);
+
+                    2. p->prev->next = p->next;
+                       p->next->prev = p->prev;
+
+                    3. delete p;
+                </code></pre>
+            </ul>
+
+
+        </div>
+
+        
+
+
+    </main>
+
+    <footer>
+        <div id="petting">
+            <img src="imgs/pet_fuhua.png" class="companion" id="pet-fuhua">
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
